@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MyFitnessDefault"
+    tools:context=".MainMenu">
+
+    <Button
+        android:id="@+id/btnStepC"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="btnStepClick"
+        android:text="@string/btnSC"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnMC"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="btnCalClick"
+        android:text="@string/btnMC"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnFN"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/btnFN"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMC" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="119dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
+
+    <Button
+        android:id="@+id/btnRec"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/btnRec"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFN" />
+
+    <Button
+        android:id="@+id/btnGuides"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/btnGuides"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRec" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:rotationX="20"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/spHeight"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="620dp"-->
+    <!--        android:layout_marginLeft="96dp"-->
+    <!--        android:text=""-->
+    <!--        android:textColor="@color/white"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/spWeight"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="640dp"-->
+    <!--        android:layout_marginLeft="96dp"-->
+    <!--        android:text=""-->
+    <!--        android:textColor="@color/white"/>-->
+
+    <TextView
+        android:id="@+id/height1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="185dp"
+        android:text="@string/height"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
+
+    <TextView
+        android:id="@+id/weight1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/weight"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/height1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/spAge"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="660dp"-->
+    <!--        android:layout_marginLeft="50dp"-->
+    <!--        android:text=""-->
+    <!--        android:textColor="@color/white"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/spGender"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="600dp"-->
+    <!--        android:layout_marginLeft="70dp"-->
+    <!--        android:text=""-->
+    <!--        android:textColor="@color/white"/>-->
+
+    <TextView
+        android:id="@+id/age1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/age"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/gender1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/gender"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/weight1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
+</androidx.constraintlayout.widget.ConstraintLayout>
