@@ -16,7 +16,6 @@ public class MacrosCalculator extends AppCompatActivity{
     private Spinner spinner;
     Button buttonAdd;
 
-    //private static final String[] paths = {"Chicken with rice","Pork with potatoes", "Pizza"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,30 +35,3 @@ public class MacrosCalculator extends AppCompatActivity{
         });
     }
 }
-//        ArrayAdapter<String>adapter = new ArrayAdapter<String>(MacrosCalculator.this,android.R.layout.simple_spinner_item,paths);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(this);
-//    }
-//    @Override
-//    public void onItemSelected(AdapterView<?> paths, View v, int position, long id) {
-//
-//        switch (position) {
-//            case 0:// Whatever you want to happen when the first item gets selected
-//               System.out.println("a");
-//               break;
-//            case 1:
-//                // Whatever you want to happen when the second item gets selected
-//                break;
-//            case 2:
-//                // Whatever you want to happen when the thrid item gets selected
-//                break;
-//
-//        }
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent) {
-//        // TODO Auto-generated method stub
-//    }
-//}

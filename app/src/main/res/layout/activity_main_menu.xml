@@ -80,6 +80,7 @@
         android:background="@drawable/custom_button"
         android:backgroundTint="@color/gray"
         android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="btnRecClick"
         android:text="@string/btnRec"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -119,25 +120,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/spHeight"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="620dp"-->
-    <!--        android:layout_marginLeft="96dp"-->
-    <!--        android:text=""-->
-    <!--        android:textColor="@color/white"/>-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/spWeight"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="640dp"-->
-    <!--        android:layout_marginLeft="96dp"-->
-    <!--        android:text=""-->
-    <!--        android:textColor="@color/white"/>-->
-
     <TextView
         android:id="@+id/height1"
         android:layout_width="wrap_content"
@@ -158,25 +140,6 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/height1"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/spAge"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="660dp"-->
-    <!--        android:layout_marginLeft="50dp"-->
-    <!--        android:text=""-->
-    <!--        android:textColor="@color/white"/>-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/spGender"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="600dp"-->
-    <!--        android:layout_marginLeft="70dp"-->
-    <!--        android:text=""-->
-    <!--        android:textColor="@color/white"/>-->
-
     <TextView
         android:id="@+id/age1"
         android:layout_width="wrap_content"
@@ -200,4 +163,20 @@
         app:layout_constraintBottom_toTopOf="@+id/weight1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="105dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/edit"
+        android:textSize="8sp"
+        android:onClick="btnEditClick"
+        app:layout_constraintBottom_toTopOf="@+id/gender1"
+        app:layout_constraintEnd_toStartOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuides"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
