@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyStepsCounter"
         tools:targetApi="31">
+        <activity
+            android:name=".Workout"
+            android:exported="false" />
+        <activity
+            android:name=".workout"
+            android:exported="false" />
+        <activity
+            android:name=".FitNotes"
+            android:exported="false" />
+        <activity
+            android:name=".MuscleGroupExercise"
+            android:exported="false" />
+        <activity
+            android:name=".GuidesGroup"
+            android:exported="false" />
+        <activity
+            android:name=".Guides"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".Recipes"
             android:exported="false" />

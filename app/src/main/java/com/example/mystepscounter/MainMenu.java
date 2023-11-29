@@ -10,14 +10,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
 public class MainMenu extends AppCompatActivity {
-Button  btnMC , btnFN , btnRec , btnGuides, btnEdit;
+Button btnStepC , btnMC , btnFN , btnRec , btnGuides, btnEdit;
     public void btnStepClick(View view) {
         Intent intent = new Intent(this, StepCounter.class);
+        startActivity(intent);
+    }
+    public void btnFNClick(View view) {
+        Intent intent = new Intent(this, FitNotes.class);
         startActivity(intent);
     }
     public void btnCalClick(View view) {
@@ -28,8 +35,16 @@ Button  btnMC , btnFN , btnRec , btnGuides, btnEdit;
         Intent intent = new Intent(this, Recipes.class);
         startActivity(intent);
     }
+    public void btnGuidesClick(View view){
+        Intent intent = new Intent(this, Guides.class);
+        startActivity(intent);
+    }
     public void btnEditClick(View view){
-        Log.d("MainMenu", "Edit button clicked");
+        SharedPreferences sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
+        sp.edit().remove("height").commit();
+        sp.edit().remove("weight").commit();
+        sp.edit().remove("age").commit();
+        sp.edit().remove("gender").commit();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -39,6 +54,7 @@ Button  btnMC , btnFN , btnRec , btnGuides, btnEdit;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_menu);
+
         TextView age1 , height1 , weight1 , gender1;
 
         age1 = (TextView) findViewById(R.id.age1);
@@ -50,6 +66,7 @@ Button  btnMC , btnFN , btnRec , btnGuides, btnEdit;
         btnRec = (Button) findViewById(R.id.btnRec);
         btnGuides = (Button) findViewById(R.id.btnGuides);
         btnEdit = (Button) findViewById(R.id.btnEdit);
+        btnStepC = (Button) findViewById(R.id.btnStepC);
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         String height = sp.getString("height" , "");

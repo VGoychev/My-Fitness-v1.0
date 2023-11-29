@@ -1,38 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/MyFitnessDefault"
-    tools:context=".Recipes">
+    tools:context=".Recipes"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/Recipe"
+                android:text="@string/btnRec"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/healthy_recipes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:rotationX="20"
-        android:text="@string/recipes"
-        android:textColor="@color/white"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/Recipe"
+                android:layout_margin="5dp"
+                android:src="@drawable/loading" />
 
-    <Button
-        android:id="@+id/btnChicken"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:onClick="btnChickenClick"
-        android:text="@string/chicken"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/healthy_recipes" />
+            <Spinner
+                android:id="@+id/spinner_tags"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:entries="@array/tags"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
 
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/MyFitnessDefault"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView_recipe"
+        app:queryHint="Search your recipe..."
+        app:iconifiedByDefault="false"
+        app:searchIcon="@drawable/search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_random"
+    android:layout_margin="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+</LinearLayout>
