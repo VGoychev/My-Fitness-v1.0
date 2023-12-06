@@ -218,7 +218,7 @@ public class MacrosCalculator extends AppCompatActivity {
         loadData();
     }
     private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyUserPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(foodItemList);
@@ -226,7 +226,7 @@ public class MacrosCalculator extends AppCompatActivity {
         editor.apply();
     }
     private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyUserPrefs", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("foodItemList", null);
         Type type = new TypeToken<ArrayList<FoodItem>>() {}.getType();
@@ -281,7 +281,7 @@ public class MacrosCalculator extends AppCompatActivity {
         }
     }
     private void checkAndResetData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyUserPrefs", MODE_PRIVATE);
         String savedDate = sharedPreferences.getString("lastSavedDate", "");
 
         Calendar calendar = Calendar.getInstance();
