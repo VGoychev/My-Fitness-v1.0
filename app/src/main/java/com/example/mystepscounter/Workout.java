@@ -3,13 +3,13 @@ package com.example.mystepscounter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,25 +20,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.mystepscounter.FitNotesPackage.WorkoutExerciseAdapter;
-import com.example.mystepscounter.FitNotesPackage.WorkoutExerciseItem;
+import com.example.mystepscounter.FitNotesPackage.ExerciseAdapter;
+import com.example.mystepscounter.FitNotesPackage.ExerciseInterface;
+import com.example.mystepscounter.FitNotesPackage.ExerciseItem;
 import com.example.mystepscounter.FitNotesPackage.WorkoutItem;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class Workout extends AppCompatActivity {
+public class Workout extends AppCompatActivity implements ExerciseInterface {
     Button btnAddExercise;
     RecyclerView recyclerView;
-    List<WorkoutExerciseItem> exerciseList;
     TextView textViewWorkoutName, textViewInstructions;
-    WorkoutExerciseAdapter recyclerViewAdapter;
-    Map<String, List<WorkoutExerciseItem>> exercisesMap;
+    ExerciseAdapter recyclerViewAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +43,7 @@ public class Workout extends AppCompatActivity {
         setContentView(R.layout.activity_workout);
 
         btnAddExercise = findViewById(R.id.btnAddExercise);
-        recyclerView = findViewById(R.id.recycler_workoutExercise);
+        recyclerView = findViewById(R.id.recycler_exercise);
         textViewWorkoutName = findViewById(R.id.textView_workoutName);
         textViewInstructions = findViewById(R.id.textViewInstructions);
 
@@ -55,69 +51,54 @@ public class Workout extends AppCompatActivity {
 
         textViewWorkoutName.setText(selectedWorkoutName);
 
-        exerciseList = new ArrayList<>();
-        Log.d("WorkoutActivity", "Selected Workout Name: " + selectedWorkoutName);
-        exercisesMap = loadExercisesMap();
-//        exercisesMap = loadExercisesMap();
-
-        if (exercisesMap == null) {
-            exercisesMap = new HashMap<>();
-        }
-
-
-        exerciseList = exercisesMap.get(selectedWorkoutName);
-        if (exerciseList == null) {
-            exerciseList = new ArrayList<>();
-            exercisesMap.put(selectedWorkoutName, exerciseList);
-        }
-
-        recyclerViewAdapter = new WorkoutExerciseAdapter(this, exerciseList);
-
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Workout.SwipeToDeleteCallback());
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-
-        updateInstructionsVisibility(exerciseList);
-
-        loadExercisesMap();
         btnAddExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showAddExerciseDialog();
             }
         });
+        initRecyclerView();
+        loadExerciseList();
+        updateInstructionsVisibility();
+    }
+    @Override
+    public void onItemClick(ExerciseItem exerciseItem) {
+        Intent intent = new Intent(Workout.this, Exercise.class);
+        intent.putExtra("EXERCISE_NAME", exerciseItem.getExerciseName()); // Pass workout details
+        intent.putExtra("EXERCISE_ID", exerciseItem.getId());
+        startActivity(intent);
     }
     private void showAddExerciseDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogBackground);
         LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_add_workout, null);
+        View dialogView = inflater.inflate(R.layout.dialog_add_exercise, null);
         builder.setView(dialogView);
 
-        final EditText exerciseNameEditText = dialogView.findViewById(R.id.editText_workout_name);
+        final EditText exerciseNameEditText = dialogView.findViewById(R.id.editText_exercise_name);
 
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String exerciseName = exerciseNameEditText.getText().toString().trim();
                 if (!exerciseName.isEmpty()){
+                    int workoutId = getIntent().getIntExtra("WORKOUT_ID",-1);
+                    if (workoutId != -1) {
+                        saveNewExercise(exerciseName,workoutId);
+                        loadExerciseList();
+                        recyclerViewAdapter.notifyDataSetChanged();
+                        updateInstructionsVisibility();
+                    } else {
 
-                    exerciseList.add(new WorkoutExerciseItem(exerciseName));
-                    recyclerViewAdapter.notifyDataSetChanged();
-                    Log.d("WorkoutActivity", "Added Exercise: " + exerciseName);
-                    saveExercisesMap(exercisesMap);
-                    updateInstructionsVisibility(exerciseList);
-
+                    }
                 }
                 dialog.dismiss();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-           @Override
-           public void onClick(DialogInterface dialog, int which){
-               dialog.dismiss();
-           }
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                dialog.dismiss();
+            }
         });
 
         AlertDialog dialog = builder.create();
@@ -141,7 +122,63 @@ public class Workout extends AppCompatActivity {
 
         dialog.show();
     }
+    private void updateInstructionsVisibility() {
+        if (recyclerViewAdapter.getItemCount() == 0) {
+            textViewInstructions.setVisibility(View.VISIBLE);
+        } else {
+            textViewInstructions.setVisibility(View.GONE);
+        }
+    }
+    private void deleteItem(ExerciseItem exerciseItem) {
 
+        AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
+        database.exerciseDao().delete(exerciseItem);
+        recyclerViewAdapter.removeExerciseItem(exerciseItem);
+
+    }
+    private void saveNewExercise(String exerciseName, int workoutId) {
+        AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
+        workoutId = getIntent().getIntExtra("WORKOUT_ID", -1);
+        try {
+            WorkoutItem workoutItem = database.workoutDao().getWorkoutById(workoutId);
+            if (workoutItem != null) {
+                // The workoutId exists, proceed with saving ExerciseItem
+                ExerciseItem exerciseItem = new ExerciseItem();
+                exerciseItem.exerciseName = exerciseName;
+                exerciseItem.workoutId = workoutId;
+                database.exerciseDao().insertExerciseItem(exerciseItem);
+            } else {
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+    public void initRecyclerView() {
+        recyclerView = findViewById(R.id.recycler_exercise);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerViewAdapter = new ExerciseAdapter(this);
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setExerciseInterface(this);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Workout.SwipeToDeleteCallback());
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+    private void loadExerciseList() {
+        AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
+        int selectedWorkoutId = getIntent().getIntExtra("WORKOUT_ID", -1);
+        if (selectedWorkoutId != -1) {
+            // Fetch exercises associated with the selected workout ID
+            List<ExerciseItem> exercisesForWorkout = database.exerciseDao().getExercisesForWorkout(selectedWorkoutId);
+            recyclerViewAdapter.setExerciseList(exercisesForWorkout);
+            recyclerViewAdapter.notifyDataSetChanged();
+        } else {
+            Log.e("WorkoutActivity", "No workout ID found in the intent");
+        }
+    }
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
         SwipeToDeleteCallback() {
             super(0, ItemTouchHelper.LEFT);
@@ -154,44 +191,9 @@ public class Workout extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
             int position = viewHolder.getAdapterPosition();
-            Log.d("WorkoutActivity", "Deleting Exercise: " + exerciseList.get(position).getName());
-            exerciseList.remove(position);
-            recyclerViewAdapter.notifyItemRemoved(position);
-
-            saveExercisesMap(exercisesMap);
-            updateInstructionsVisibility(exerciseList);
-        }
-    }
-
-    private void saveExercisesMap(Map<String, List<WorkoutExerciseItem>> exercisesMap) {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(exercisesMap);
-
-        editor.putString("EXERCISES_MAP", json);
-        editor.apply();
-
-        Log.d("WorkoutActivity", "ExercisesMap saved to SharedPreferences: " + json);
-    }
-
-    private Map<String, List<WorkoutExerciseItem>> loadExercisesMap() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("EXERCISES_MAP", "");
-
-        Type type = new TypeToken<Map<String, List<WorkoutExerciseItem>>>() {}.getType();
-
-        Log.d("WorkoutActivity", "ExercisesMap loaded from SharedPreferences: " + json);
-
-        return gson.fromJson(json, type);
-    }
-    private void updateInstructionsVisibility(List<WorkoutExerciseItem> exerciseList) {
-        if (exerciseList.isEmpty()) {
-            textViewInstructions.setVisibility(View.VISIBLE);
-        } else {
-            textViewInstructions.setVisibility(View.GONE);
+            ExerciseItem deletedItem = recyclerViewAdapter.getExerciseList().get(position);
+            deleteItem(deletedItem);
+            updateInstructionsVisibility();
         }
     }
 }

@@ -7,29 +7,12 @@
     android:background="@color/MyFitnessDefault"
     tools:context=".MainMenu">
 
-    <Button
-        android:id="@+id/btnStepC"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/custom_button"
-        android:backgroundTint="@color/gray"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:onClick="btnStepClick"
-        android:text="@string/btnSC"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnMC"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/custom_button"
         android:backgroundTint="@color/gray"
         android:fontFamily="sans-serif-condensed-medium"
@@ -39,6 +22,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
@@ -46,16 +30,17 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:backgroundTint="@color/gray"
         android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="btnFNClick"
         android:text="@string/btnFN"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:onClick="btnFNClick"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMC" />
 

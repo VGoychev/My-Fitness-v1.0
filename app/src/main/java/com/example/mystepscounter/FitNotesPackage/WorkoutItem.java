@@ -1,15 +1,20 @@
 package com.example.mystepscounter.FitNotesPackage;
 
-import java.util.UUID;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity
 public class WorkoutItem {
-    String name;
-    String id;
-    public WorkoutItem(String name){
-        this.name = name;
-        this.id = UUID.randomUUID().toString();
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+    @ColumnInfo(name = "workout_name")
+    public String workoutName;
+
+    public String getWorkoutName() {
+        return workoutName;
     }
-    public String getName(){
-        return name;
+    public int getId(){
+        return id;
     }
 }

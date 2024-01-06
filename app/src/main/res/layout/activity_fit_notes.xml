@@ -54,10 +54,11 @@
             android:id="@+id/textView_workout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/gray"
             android:gravity="center"
             android:padding="4dp"
             android:layout_margin="4dp"
-            android:text="Workout"
+            android:text="Workout list"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"/>

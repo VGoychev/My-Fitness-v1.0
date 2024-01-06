@@ -1,6 +1,7 @@
 package com.example.mystepscounter.FitNotesPackage;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +15,29 @@ import com.example.mystepscounter.R;
 import java.util.List;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHolder> {
-    List<WorkoutItem> workoutList;
-    Context context;
-    WorkoutInterface workoutInterface;
+    private List<WorkoutItem> workoutList;
+    private Context context;
+    private WorkoutInterface workoutInterface;
 
-    public WorkoutAdapter(Context context, List<WorkoutItem> workoutList, WorkoutInterface workoutInterface) {
-        this.context = context;
-        this.workoutList = workoutList;
+    public void setWorkoutInterface(WorkoutInterface workoutInterface) {
         this.workoutInterface = workoutInterface;
+    }
+    public void setWorkoutList(List<WorkoutItem> workoutList){
+        this.workoutList = workoutList;
+        notifyDataSetChanged();
+    }
+    public List<WorkoutItem> getWorkoutList() {
+        return workoutList;
+    }
+    public void removeItem(WorkoutItem workoutItem) {
+        int position = workoutList.indexOf(workoutItem);
+        if (position != -1) {
+            workoutList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+    public WorkoutAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -34,13 +50,15 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        WorkoutItem currentWorkout = workoutList.get(position);
-        holder.textView_workout_name.setText(currentWorkout.getName());
+        holder.textView_workout_name.setText(this.workoutList.get(position).workoutName);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (workoutInterface != null) {
-                    workoutInterface.onWorkoutClick(position);
+                    int position = holder.getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        workoutInterface.onItemClick(workoutList.get(position));
+                    }
                 }
             }
         });
@@ -48,18 +66,17 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return workoutList.size();
+        return this.workoutList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView_workout_name;
-        // You can include other TextViews for additional workout details
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_workout_name = itemView.findViewById(R.id.textView_exercise);
-            // Initialize other TextViews if needed
+
         }
-        // Add views for each item in the RecyclerView (e.g., TextViews)
+
     }
 }

@@ -18,11 +18,8 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 public class MainMenu extends AppCompatActivity {
-Button btnStepC , btnMC , btnFN , btnRec , btnGuides, btnEdit;
-    public void btnStepClick(View view) {
-        Intent intent = new Intent(this, StepCounter.class);
-        startActivity(intent);
-    }
+Button btnMC , btnFN , btnRec , btnGuides, btnEdit;
+
     public void btnFNClick(View view) {
         Intent intent = new Intent(this, FitNotes.class);
         startActivity(intent);
@@ -66,7 +63,6 @@ Button btnStepC , btnMC , btnFN , btnRec , btnGuides, btnEdit;
         btnRec = (Button) findViewById(R.id.btnRec);
         btnGuides = (Button) findViewById(R.id.btnGuides);
         btnEdit = (Button) findViewById(R.id.btnEdit);
-        btnStepC = (Button) findViewById(R.id.btnStepC);
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         String height = sp.getString("height" , "");

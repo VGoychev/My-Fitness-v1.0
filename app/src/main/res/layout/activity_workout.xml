@@ -55,6 +55,7 @@
         android:id="@+id/textView_workoutName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/gray"
         android:gravity="center"
         android:padding="4dp"
         android:layout_margin="4dp"
@@ -68,13 +69,13 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:layout_margin="4dp"
-        android:text="Click the  +  to add am exercise"
+        android:text="Click the  +  to add an exercise"
         android:textColor="@color/white"
         android:textStyle="italic"
         android:textAlignment="center"
         android:textSize="14sp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_workoutExercise"
+        android:id="@+id/recycler_exercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
