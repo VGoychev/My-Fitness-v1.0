@@ -15,26 +15,378 @@
     <string name="btnSC">Step Counter</string>
     <string name="btnMC">Macros Calculator</string>
     <string name="btnFN">Fit Notes</string>
-    <string name="btnRec">Fit Recipes</string>
+    <string name="btnRec">Recipes</string>
     <string name="btnGuides">Exercise Guides</string>
     <string name="Choose">Choose food :</string>
     <string name="age">Age:</string>
     <string name="weight">Weight(kg):</string>
     <string name="height">Height(cm):</string>
-    <string name="recipes">Healthy Recipes</string>
     <string name="chicken">Chicken with rice</string>
-    <string name="edit">edit measurements</string>
+    <string name="edit">Edit Measurements</string>
+    <string name="api_key">e17b90579a8e47e7ba8d78b7b4371946</string>
+    <string name="nutritions">Nutritions Information</string>
     <string-array name="array_menu">
-        <item>...</item>
-        <item>Chicken with rice</item>
-        <item>Chicken with potatoes</item>
-        <item>Pork with rice</item>
-        <item>Pork with potatoes</item>
-        <item>Pasta</item>
-        <item>Pizza</item>
-        <item>Low-calorie pizza</item>
-        <item>Burger</item>
-        <item>Low-calorie Burger</item>
-        <item>Scrambled eggs</item>
+        <item>Chicken with rice(350g)</item>
+        <item>Chicken with potatoes(350g)</item>
+        <item>Pork with rice(350g)</item>
+        <item>Pork with potatoes(350g)</item>
+        <item>Pasta(250g)</item>
+        <item>Pizza(400g)</item>
+        <item>Low-calorie pizza(400g)</item>
+        <item>Beef Burger(300g)</item>
+        <item>Low-calorie Burger(300g)</item>
+        <item>Scrambled eggs(250g)</item>
+        <item>Banana(118g)</item>
+        <item>Apple(182g)</item>
+        <item>Pitted Dates(30g)</item>
+        <item>Coca-Cola(500ml)</item>
+        <item>Coca-Cola Zero(500ml)</item>
+    </string-array>
+    <string-array name="tags">
+        <item>main course</item>
+        <item>side dish</item>
+        <item>dessert</item>
+        <item>appetizer</item>
+        <item>salad</item>
+        <item>bread</item>
+        <item>breakfast</item>
+        <item>soup</item>
+        <item>beverages</item>
+        <item>sauce</item>
+        <item>marinade</item>
+        <item>fingerfood</item>
+        <item>snack</item>
+        <item>drink</item>
+    </string-array>
+    <string-array name="muscle_group_exercise">
+        <item>Muscle Group Chest</item>
+        <item>Muscle Group Back</item>
+        <item>Muscle Group Core</item>
+        <item>Muscle Group Arms</item>
+        <item>Muscle Group Legs</item>
+    </string-array>
+    <string-array name="muscle_group_description">
+        <item>The chest muscles are responsible for moving the arms across the body and up and down, as well as other movements like flexion, adduction, and rotation. Most chest exercises involve pushing the arms away from the body or the body away from the arms. The stronger your chest muscles are, the stronger your entire body is.</item>
+        <item>Many people train their chest, abdomen and shoulders in the gym, but not their back. As a result, only the front part of the body is stressed and neglecting the back has a higher potential for injury. Strengthening your back not only keeps you fit and keeps your posture straight, it also looks good. But most importantly, you minimize the risk of suffering from obnoxious pain. And that does not just apply to back pain - a "bad" back puts strain on the neck, which in turn leads to headaches and, in the worst cases, numbness in the arms and legs.</item>
+        <item>Your core is the central part of your body. It includes your pelvis, lower back, hips and stomach. The stomach muscles sometimes are called abs. Core exercises train the muscles in your core to work in harmony. This leads to better balance and steadiness, also called stability. Stability is important whether you are on the playing field or doing regular activities. In fact, most sports and other physical activities depend on stable core muscles.</item>
+        <item>Any pushing, pulling, reaching, or swinging movement of the arms requires a different set of muscles, and training those muscles can help you do everything from carrying a bag of groceries and picking up your dog to holding a plank pose in yoga and opening a heavy door.</item>
+        <item>Lets face it, people walk, run, jump, keep going. Especially when you do running sports (such as running), training your leg muscles will benefit greatly from this. Stronger leg muscles and a core provide more stability. You also have much more explosive power, which is very useful for crossfit or HIIT. As a runner you will stumble less often and the chance of running injuries is much smaller.</item>
+    </string-array>
+    <string-array name="muscle_group_chest_exercises">
+        <item>Bench Press</item>
+        <item>Incline Bench Press</item>
+        <item>Decline Bench Press</item>
+        <item>Chest Flye</item>
+        <item>Cable Crossover</item>
+        <item>Dumbbell Bench Press</item>
+        <item>Push-up</item>
+        <item>Dip</item>
+        <item>Machine Chest Press</item>
+    </string-array>
+    <string-array name="muscle_group_chest_exercises_description">
+        <item>The bench press is a compound exercise that targets the muscles of the upper body. It involves lying on a bench and pressing weight upward using either a barbell or a pair of dumbbells. During a bench press, you lower the weight down to chest level and then press upwards while extending your arms. This movement is considered one repetition, or rep.</item>
+        <item>The incline bench press is a variation of the bench press and an exercise used to build the muscles of the chest. The shoulders and triceps will be indirectly involved as well. Utilizing an incline will allow you to better target the upper portion of the chest, a lagging part for a lot of lifters. You can include incline bench press in your chest workouts, upper body workouts, push workouts, and full body workouts.</item>
+        <item>The decline bench press is an excellent exercise for strengthening your lower chest muscles. It’s a variation of the flat bench press, a popular chest workout. In a decline bench press, the bench is set to 15 to 30 degrees on a decline. This angle places your upper body on a downward slope, which activates the lower pectoral muscles as you push weights away from your body. When part of a complete chest routine, decline bench presses can help your pecs look more defined.</item>
+        <item>The dumbbell chest fly can help open up your chest muscles. Chest openers may help reduce upper back pain, increase range of motion, and reduce tightness in the upper body. If you’re doing dumbbell chest flies as a way to open up your chest muscles, consider using lighter weights, or even no weights. That can help you to get the full range of motion from the move without overextending. Extending too far may lead to an injury.</item>
+        <item>The cable cross-over is an isolation movement that uses a cable stack to build bigger and stronger pectoral muscles. Since it is done using adjustable pulleys, you can target different parts of your chest by setting the pulleys at different levels. It is common in upper body and chest-focused muscle-building workouts, often as a pre-exhaust at the beginning of a workout, or a finishing movement at the end. It is often in combination with other presses or flyes to target the chest from different angles.</item>
+        <item>Often times, the dumbbell bench press is recommended after reaching a certain point of strength on the barbell bench press to avoid pec and shoulder injuries. Additionally, the dumbbell bench press provides an ego check in the amount of weight used due to the need to maintain shoulder stability throughout the exercise. The exercise itself can be featured as a main lift in your workouts or an accessory lift to the bench press depending on your goals.</item>
+        <item>The push-up builds both upper-body and core strength.1 It has many modifications; beginners can start with easier versions, while more advanced exercisers can use a challenging variation. You can do the push-up as part of a bodyweight exercise session, a circuit training workout, or a strength workout.</item>
+        <item>Depending on the type of training you are doing, dips are one of the exercises that can often be easily forgotten, but are a great addition to your chest, shoulders and arm day workouts. Whether you are in a gym or outside or at home, there is always a piece of equipment around that you can use to add dips to any workout routine.</item>
+        <item>The chest press helps build the pectoral muscles while also working the biceps, deltoids, and latissimus dorsi. The seated chest press is an upright version of the lying bench press and a great addition to an upper-body strength workout.</item>
+    </string-array>
+    <string-array name="muscle_group_chest_exercises_instructions">
+        <item>Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders.
+            \n\nPress your feet firmly into the ground and keep your hips on the bench throughout the entire movement.
+            \n\nKeep your core engaged and maintain a neutral spine position throughout the movement. Avoid arching your back.
+            \n\nSlowly lift the bar or dumbbells off the rack, if using. Lower the bar to the chest, about nipple level, allowing elbows to bend out to the side, about 45 degrees away from the body.
+            \n\nStop lowering when your elbows are just below the bench. Press feet into the floor as you push the bar back up to return to starting position.
+            \n\nPerform 5 to 10 reps, depending on weight used. Perform up to 3 sets.</item>
+        <item>Lie flat on an incline bench and set your hands just outside of shoulder width.
+            \n\nSet your shoulder blades by pinching them together and driving them into the bench.
+            \n\nTake a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.
+            \n\nLet the weight settle and ensure your upper back remains tight after lift off.
+            \n\nInhale and allow the bar to descend slowly by unlocking the elbows.
+            \n\nLower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.
+            \n\nPush the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.
+            \n\nRepeat for the desired number of repetitions.</item>
+        <item>Secure your feet at the end of the bench. Lie down with your eyes under the barbell.
+            \n\nGrip the bar with your palms facing forward, arms slightly wider than shoulder-width apart.
+            \n\nStraighten your arms to lift the barbell from the rack. Move it over your shoulders, locking your elbows.
+            \n\nInhale and slowly lower the barbell until it touches your mid-chest, keeping your elbows 45 degrees from your body. Pause.
+            \n\nExhale and lift the barbell to starting position, locking your elbows. Pause.
+            \n\nComplete 12 repetitions. Return the barbell to the rack.
+            \n\nRepeat 3 to 5 sets total.</item>
+        <item>Lie flat on your back on a flat incline bench. Place your feet firmly on the floor on either side of the bench. Your head and back should remain firmly pressed into the bench throughout the exercise.
+            \n\nAsk a spotter to hand you the 2 dumbbells, or gently pick them up from the floor and hold 1 in each hand.
+            \n\nLift arms up above the head so they’re extended but not locked out. There should be a slight bend at your elbow, and your palms and dumbbells should be facing each other.
+            \n\nInhale and slowly lower dumbbells in an arc motion until they’re in line with the chest. Your arms will be extended to the sides but not locked out. Don’t drop your arms lower than your shoulders.
+            \n\nExhale and slowly press the dumbbells up in the same arc motion.
+            \n\nPerform 10–15 reps. Rest. Do 3 sets total.</item>
+        <item>To get yourself into the starting position, place the pulleys on a high position (above your head), select the resistance to be used and hold the pulleys in each hand.
+            \n\nStep forward in front of an imaginary straight line between both pulleys while pulling your arms together in front of you. Your torso should have a small forward bend from the waist. This will be your starting position.
+            \n\nWith a slight bend on your elbows in order to prevent stress at the biceps tendon, extend your arms to the side (straight out at both sides) in a wide arc until you feel a stretch on your chest. Breathe in as you perform this portion of the movement. Tip: Keep in mind that throughout the movement, the arms and torso should remain stationary; the movement should only occur at the shoulder joint.
+            \n\nReturn your arms back to the starting position as you breathe out. Make sure to use the same arc of motion used to lower the weights.
+            \n\nHold for a second at the starting position and repeat the movement for the prescribed amount of repetitions.</item>
+        <item>Pick up the dumbbells off the floor using a neutral grip (palms facing in). Position the ends of the dumbbells in your hip crease, and sit down on the bench.
+            \n\nTo get into position, lay back and keep the weights close to your chest. Once you are in position, take a deep breath, and press the dumbbells to lockout at the top.
+            \n\nSlowly lower the dumbbells under control as far as comfortably possible (the handles should be about level with your chest).
+            \nContract the chest and push the dumbbells back up to the starting position.
+            \n\nRepeat for the desired number of repetitions.</item>
+        <item>Contract your abs and tighten your core by pulling your belly button toward your spine.
+            \n\nInhale as you slowly bend your elbows and lower yourself to the floor, until your elbows are at a 90-degree angle.
+            \n\nExhale while contracting your chest muscles and pushing back up through your hands, returning to the start position. </item>
+        <item>Using parallel bars, hoist yourself up so that your arms are fully extending straight down, wrists slightly behind shoulders.
+            \n\nMake sure your abs and glutes are activated in order to stabilize your body from swinging.
+            \n\nBend your knees, you may cross your feet over for comfort.
+            \n\nLean your chest forward, approximately 30 degrees. Ideally your body will form a “L” shape.
+            \n\nAs you descend into your dip, allow your elbows to flare out slightly, continue until your shoulders are slightly lower than your elbows and you feel a slight stretch in your chest muscles.</item>
+        <item>Grasp the handles with a full grip, your thumb circled around the handle.
+            \n\nMaintain a neutral wrist position with your wrists in line with your forearms.
+            \n\nExhale and push outward until your arms are fully extended (do not lock the elbows).
+            \n\nKeep your head steady against the back support during this movement and your neck still. You should feel resistance against the horizontal push.
+            \n\nPause briefly at full extension.
+            \n\nBend your elbows and return to the starting position, breathing in during this recovery.</item>
+    </string-array>
+    <string-array name="muscle_group_back_exercises">
+        <item>Deadlift</item>
+        <item>Barbell Bent-Over Row</item>
+        <item>Upright Row</item>
+        <item>Single-Arm Dumbbell Row</item>
+        <item>Pull-Ups</item>
+        <item>Chin-Ups</item>
+        <item>Lat Pull-Down Wide</item>
+        <item>Lat Pull-Down Close</item>
+        <item>Seated Cable Row</item>
+        <item>Shrugs</item>
+    </string-array>
+    <string-array name="muscle_group_back_exercises_description">
+        <item>In a deadlift, you lift the weight from the ground to thigh-level using primarily your leg and hip muscles, but with the assistance of most of the large muscle groups of your body. The deadlift is usually performed with a bar and plates or a fixed barbell, but you can also do it with dumbbells.</item>
+        <item>Sometimes referred to as the barbell row, the bent over row is a staple movement in most muscle building workouts. Those looking to build muscle utilize the bent over row to target their back, bicep and core muscle.</item>
+        <item>The upright row is considered one of the best muscle builders for the back and shoulders. It is also potentially dangerous for the shoulders, requiring perfect form for the best results and helps to avoid injury.</item>
+        <item>Rows are a foundational movement pattern and are very important to train for balanced muscle growth and strength. So, experiment until you find a rowing variation that you enjoy and work on it. The one arm dumbbell row can be performed during your back workouts, upper body workouts, pull workouts, and full body workouts.</item>
+        <item>Pullups can be a good exercise to challenge your arm, shoulder, and back muscles. They may also improve your overall body strength and fitness, physical health, and mental health.</item>
+        <item>The chin up is a variation of the pull up and an exercise used to build the muscles of the back - particularly the lats. The chin up differs from the pull up in that the chin up allows for a greater degree of bicep involvement during the pulling movement.</item>
+        <item>The wide grip lat pull down is a variation of the lat pull down and an exercise used to target the muscles of the back. The change in grip used to perform a wide grip lat pull down allows you to put a greater focus on pulling the weight with the lats.</item>
+        <item>The close grip lat pull down is a variation of the lat pull down and an exercise used to build the muscles of the back. While the exercise will primarily target the lats, you will also notice a fair amount of bicep and middle back activation.</item>
+        <item>The seated cable row develops the muscles of the back and the forearms. It is an excellent all-around compound exercise for developing the middle back while offering useful arm work as well.</item>
+        <item>The dumbbell shrug is a variation of the shrug and an exercise used to build trap muscle size. Traps, being a stubborn muscle group for many, can be trained with a fairly high frequency during the week. When doing so, be sure to mix up the volume, intensity, and implements you use to train the traps. Dumbbell shrugs can be included into your shoulder workouts, back workouts, upper body workouts, and full body workouts.</item>
+    </string-array>
+    <string-array name="muscle_group_back_exercises_instructions">
+        <item>Position the feet shoulder-width apart (or not much more) with toes under the bar. The feet point straight ahead, or they can angle out slightly. Heels should stay flat on the surface. When you lift, the bar will travel close to the shins and may even graze them. Maintain a neutral spine position.
+            \n\nStabilize the abdominal muscles by bracing them.
+            \n\nSquat down, bending at the knees. The form for descending to the bar is similar (but not identical) to the squat, with your back straight or arched slightly and not rounded at the shoulders or spine.
+            \n\nGrasp the bar just outside the line of the knees with an overhand or mixed grip.
+            \n\nLift the bar by pushing upward with the legs from the knees. Breathe out on exertion. Be careful not to raise the hips first so the trunk moves forward and the back becomes rounded. Don’t try to haul the bar up with your arms. The arms stay extended under tension while gripping the bar as the legs push up. Think of the legs and shoulders moving upward in unison with the hips, the balancing point.
+            \n\nThe bar should almost graze the shins and rest around thigh level as you reach full height. Pull the shoulders back as much as possible without bending backward.
+            \n\nLower the bar to the floor with a reverse motion ensuring a straight back.
+            \n\nRepeat for your desired number of repetitions.</item>
+        <item>Assume a standing position while holding the bar using a double overhand grip.
+            \n\nHinge forward until your torso is roughly parallel with the floor (or slightly above) and then begin the movement by driving the elbows behind the body while retracting the shoulder blades.
+            \n\nPull the bar towards your belly button until it touches your body and then slowly lower the bar back to the starting position under control.
+            \n\nRepeat for the desired number of repetitions.</item>
+        <item>Breathe in and brace the abdominals. Keep your back straight, chest up, and eyes focused forward.
+            \n\nLift the barbell up (toward the chin) as you exhale. Lead with the elbows and keep the bar close to the body.
+            \n\nPause at the top of the lift.
+            \n\nLower the barbell as you inhale, returning it to the starting position. </item>
+        <item>Assume a standing position while holding a dumbbell in one hand with a neutral grip.
+            \n\nHinge forward until your torso is roughly parallel with the floor (or slightly above) and then begin the movement by driving the elbow behind the body while retracting the shoulder blade.
+            \n\nPull the dumbbell towards your body until the elbow is at (or just past) the midline and then slowly lower the dumbbell back to the starting position under control.
+            \n\nRepeat for the desired number of repetitions on both sides.</item>
+        <item>Grab the pullup bar with your palms down (shoulder-width grip).
+            \n\nHang to the pullup-bar with straight arms and your legs off the floor.
+            \n\nPull yourself up by pulling your elbows down to the floor.
+            \n\nGo all the way up until your chin passes the be bar.
+            \n\nLower yourself until your arms are straight.</item>
+        <item>Using a supinated grip, grasp the bar with a shoulder width grip.
+            \n\nTake a deep breath, squeeze your glutes and brace your abs. Depress the shoulder blades and then drive the elbows straight down to the floor while activating the lats.
+            \n\nPull your chin towards the bar until the lats are fully contracted, then slowly lower yourself back to the start position and repeat for the assigned number of repetitions.</item>
+        <item>Attach a wide grip handle to the lat pull down machine and assume a seated position.
+            \n\nGrasp the handle with a pronated grip (double overhand) as wide as possible.
+            \n\nInitiate the movement by depressing the shoulder blade and then flexing the elbow while extending the shoulder.
+            \n\nPull the handle towards your body until the elbows are in line with your torso and then slowly lower the handle back to the starting position under control.
+            \n\nRepeat for the desired number of repetitions.</item>
+        <item>Attach a close grip handle to the lat pulldown machine and assume a seated position.
+            \n\nGrasp the handle with a pronated grip (double underhand) at shoulder width.
+            \n\nInitiate the movement by depressing the shoulder blades and then flexing the elbow while extending the shoulder.
+            \n\nPull the handle towards your body until the elbows are in line with your torso and then slowly lower the handle back to the starting position under control.
+            \n\nRepeat for the desired number of repetitions.</item>
+        <item>Set the appropriate weight on the weight stack and attach a close-grip bar or V-bar to the seated row machine.
+            \n\nGrasp the bar with a neutral grip (palms facing in).
+            \n\nKeeping your legs slightly bent and your back straight, pull the weight up slightly off the stack. You should be sitting straight upright with your shoulders back. This is the starting position.
+            \n\nKeeping your body in position, pull the handle into your stomach.
+            \n\nPull your shoulder blades back, squeeze, pause, and then slowly lower the weight back to the starting position.
+            \n\nRepeat for desired reps.</item>
+        <item>Assume a standing position with the dumbbells on both sides of your body.
+            \n\nHinge forward, inhale, and grab the dumbbells with a neutral grip.
+            \n\nStand up tall and ensure your spine remains neutral.
+            \n\nContract the traps to elevate the shoulders. Squeeze hard at the top and slowly lower the dumbbells back to the starting position.
+            \n\nRepeat for the desired number of repetitions.</item>
+    </string-array>
+    <string-array name="muscle_group_abs_exercises">
+        <item>Plank</item>
+        <item>Crunch</item>
+        <item>Cable Crunch</item>
+        <item>Leg Lift</item>
+        <item>Bicycle Crunch</item>
+        <item>Medicine Ball Slam</item>
+        <item>Hanging Leg Raise</item>
+    </string-array>
+    <string-array name="muscle_group_abs_exercises_description">
+        <item>Planking provides many physical benefits. Strengthening the core is an important aspect of any workout regimen. A strong and solid core looks and feels good. But more importantly, it helps to stabilize, balance, and power the body during just about every other activity.</item>
+        <item>The crunch is a classic core exercise. It specifically trains your abdominal muscles, which are part of your core. Your core consists not only of your abs. It also includes your oblique muscles on the sides of your trunk, as well as the muscles in your pelvis, lower back, and hips. Together, these muscles help stabilize your body.</item>
+        <item>The kneeling cable crunch is a popular core isolation exercise using a rope attachment and cable stack while kneeling on the floor. It primarily targets the rectus abdominis or "six-pack" muscles, but also strengthens the deep core muscles. It is most commonly performed early in an ab workout, usually in moderate to high reps.</item>
+        <item>Traditional leg lifts and their many variations target the muscles that make up your core. A strong core helps you stand straighter and keeps your trunk stabilized during your workout — and even as you go about your daily activities. Studies show that strengthening your core can also help if you’re living with lower back pain.</item>
+        <item>The bicycle crunch is an effective ab exercise, working not only the upper ab muscles, but also the deep abs and the obliques, or the ab muscles found on the sides of your torso.</item>
+        <item>Medicine ball slams are an excellent form of upper body plyometric training designed to enhance all-around power and strength. For anyone who adds a medicine ball to their core workout equipment, slams can help enhance overall athletic performance, improve cardiovascular conditioning, and develop multi-directional core strength.</item>
+        <item>Hanging leg raises require the use of a bar that you can grasp above your head. Some ab machines provide these features. This bar must be stable and able to support your full body weight, as well as withstand the stress that is added when you raise and lower your legs.</item>
+    </string-array>
+    <string-array name="muscle_group_abs_exercises_instructions">
+        <item>Begin in the plank position, face down with your forearms and toes on the floor. Your elbows are directly under your shoulders and your forearms are facing forward. Your head is relaxed and you should be looking at the floor.
+            \n\nEngage your abdominal muscles, drawing your navel toward your spine. Keep your torso straight and rigid and your body in a straight line from your ears to your toes with no sagging or bending. This is the neutral spine position. Ensure your shoulders are down, not creeping up toward your ears. Your heels should be over the balls of your feet.
+            \n\nHold this position for 10 seconds. Release to floor.
+            \n\nOver time work up to 30, 45, or 60 seconds.</item>
+        <item>Lie down on your back. Plant your feet on the floor, hip-width apart. Bend your knees and place your arms across your chest. Contract your abs and inhale.
+            \n\nExhale and lift your upper body, keeping your head and neck relaxed.
+            \n\nInhale and return to the starting position.</item>
+        <item>Kneel on the ground in front of a cable machine, holding one end of the rope in each hand around your face.
+            \n\nExhale and bend your torso forward without moving your lower body.
+            \n\nContinue until you can no longer do so.
+            \n\nInhale and allow your torso to be raised back up, returning to the starting position.</item>
+        <item>Lie flat on the floor or on a thin towel or yoga mat.
+            \n\nFirmly glue your back body to the floor — from your head to your backside — making sure there’s no space between the floor and your lower back.
+            \n\nSqueeze your legs together, from your inner thighs all the way to your ankles. You can keep your feet and toes relaxed.
+            \n\nInhale as you slowly lift both of your legs together, keeping your legs as straight as possible. (Your goal is to get your legs all the way vertical so your body looks like a capital L. This may take some time to achieve.)
+            \n\nSlowly exhale as you slowly lower your legs. Lower them until they hover just a few inches above the floor.
+            \n\nPause and complete the next repetition. Nykor suggests beginners start by completing about 10 repetitions per session — or 30 seconds if you’d rather follow the clock. As you gain strength, you can slowly begin to increase the number of reps.</item>
+        <item>Contract your core muscles, drawing in your abdomen to stabilize your spine.
+            \n\nHold your head gently with your hands. Pull your shoulder blades back and slowly raise your knees to about a 90-degree angle, lifting your feet from the floor.
+            \n\nExhale and slowly, at first, go through a bicycle pedal motion, bringing one knee up towards your armpit while straightening the other leg, keeping both elevated higher than your hips.
+            \n\nRotate your torso so you can touch your elbow to the opposite knee as it comes up.
+            \n\nTwist to the other side, while drawing that knee towards your armpit and the other leg extended until your elbow touches the alternate knee.
+            \n\nAim for 12 to 20 repetitions and three sets.</item>
+        <item>To start, stand tall with your feet roughly shoulder-width apart, your knees and hips slightly bent, holding a medicine ball in both hands at your torso. Engage your core, drawing your abs toward your spine and rolling your shoulders back to start with perfect posture.
+            \n\nSquat down slightly to load the spring. Then, in one powerful motion, inhale and press through your heels before rising up on the balls of your feet. Extend your knees and hips as you rise to power the upward swing of your arms and lift the medicine ball overhead. The ball should be almost straight overhead with your arms extended at the height of the movement. Keep your arms straight, not leaning back so the ball is behind you.
+            \n\nUse your core and your arms to slam the medicine ball straight down between your feet with as much force as you can. Press your hips back and bend your knees to further power the slam. Exhale as you slam the ball down.
+            \n\nSquat down to pick up the ball from the floor, then immediately move into the next slam by powerfully using your calves, quads, hamstrings, and glutes to rise up to standing. Come up on the balls of your feet again as you lift the medicine ball overhead.
+            \n\nContinue for a full set of slams (either a number of reps or a time interval).</item>
+        <item>Exhale as you lift your feet off the ground, raising your straight legs outward in front of you. Tilt your pelvis slightly back and engage your abdominals and hip flexors to assist with the movement.
+            \n\nRaise your legs to a level that feels challenging but still enables you to keep good form. Strive to get them parallel to the ground (so that your hips are bent at 90 degrees), or a little higher if you can.
+            \n\nLower your legs back down slowly until they return to the starting position, inhaling during this portion of the exercise. Maintain your posterior pelvic tilt, even at the bottom of the movement.</item>
+    </string-array>
+    <string-array name="muscle_group_arms_exercises">
+        <item>Barbell Biceps Curl</item>
+        <item>Cable Press Down</item>
+        <item>Dumbbell Hammer Curl</item>
+        <item>Barbell Skull Crusher</item>
+        <item>Preacher Curl</item>
+        <item>Barbell Curls with Reverse Grip</item>
+        <item>Dumbbell Lateral Raise</item>
+        <item>Overhead Press</item>
+        <item>Face Pull</item>
+    </string-array>
+    <string-array name="muscle_group_arms_exercises_description">
+        <item>Once you’ve nailed the technique with the accessory moves, then it’s time to start adding barbell curls to your workouts. One of the benefits of barbell curls is that you’re able to load more weight than other exercises, a key for growth.</item>
+        <item>If you enter the gym determined to get to work on your triceps, as we all do from time to time, the triceps press-down is likely to be one of the first exercises you plan on doing. It’s a simple isolation move that is as effective a triceps exercise as anything else out there for building muscle on the back of your upper arms.</item>
+        <item>A hammer curl is a variation of the biceps curl and targets muscles in the upper and lower arm. While this exercise is almost always performed with a dumbbell, you can also perform it with cables or bands. The hammer curl is a great addition to an upper-body strength routine.</item>
+        <item>The skull crusher is one of the best exercises for improving your triceps. Anyone from seasoned powerlifters, who want to improve their bench, to bodybuilders looking for more size, to general gym-goers who want a solid pump — it’s a triceps exercise for the people!</item>
+        <item>Bigger biceps. That’s the promise of preacher curls. While we like to go into great detail about the benefits of a particular exercise, there’s really no need with the preacher curl. If you want to sculpt guns worthy of Navarone, add this move to your workouts.</item>
+        <item>This is a variation on the biceps curl where the palms face downward. The switch from an underhand to an overhand grip brings the forearm and brachialis muscles more into the exercise. If it is uncomfortable to the wrists, try performing it on the angles of an EZ-curl bar.</item>
+        <item>The side lateral raise is an effective shoulder strengthening movement designed to isolate the lateral head of the deltoid muscle. Performed regularly, this can help you develop stronger, broader shoulders.</item>
+        <item>If you’re looking to strengthen and increase the size of your shoulder muscles, including your triceps, you might want to consider adding the shoulder press into your workout routine.</item>
+        <item>Face pulls target the posterior deltoids of the shoulder, which are often neglected by other shoulder exercises. You use a cable pulley machine to pull the weight straight toward your forehead. Exercising the rear delts will prevent muscular imbalance and build overall shoulder strength.</item>
+    </string-array>
+    <string-array name="muscle_group_arms_exercises_instructions">
+        <item>The standing barbell curl is the cornerstone of many bicep building routines. Grasp a barbell or Olympic bar at around shoulder width apart using an underhand grip (palms facing up).
+            \n\nStand straight up, feet together (you may be more comfortable putting one foot back for stability), back straight, and with your arms fully extended.
+            \n\nThe bar should not be touching your body.
+            \n\nKeeping your eyes facing forwards, elbows tucked in at your sides, and your body completely still, slowly curl the bar up.
+            \n\nSqueeze your biceps hard at the top of the movement, and then slowly lower it back to the starting position.
+            \n\nRepeat for desired reps.</item>
+        <item>Stand upright, gripping the bar overhand and holding it at chest level.
+            \n\nExhale and extend your arms downward while keeping your torso straight and not allowing it or your upper arms to move.
+            \n\nContinue pressing down until your arms are fully extended.
+            \n\nInhale and return to the starting position by allowing your arm to bend upwards again.</item>
+        <item>Bend at the elbow, lifting the lower arms to pull the weights toward the shoulders. Your upper arms are stationary and the wrists are in line with the forearms.
+            \n\nHold for one second at the top of the movement. Your thumbs will be close to the shoulders and palms facing in, toward the midline of the body.
+            \n\nLower the weights to return to the starting position.</item>
+        <item>Start lying on your back on your bench with your feet on the floor. Grip your barbell with your hands about shoulder-width apart and your palms facing away from you. Extend your arms all the way, locking out your elbows with the barbell suspended above your chest.
+            \n\nLower the barbell towards your forehead, keeping your elbows as tucked in as possible. Be sure to keep a tight grip on your barbell as you bring the weight down.
+            \n\nOnce the barbell reaches your forehead, lower the bar behind your head in a slow and controlled motion. You will feel your shoulders lower and your arms roll back as you complete this step.
+            \n\nPause at the bottom.
+            \n\nLift the bar back to your starting position, following the same path of movement that the bar took on the way down. Continue to focus on keeping your elbows tucked and your grip tight on the barbell.
+            \n\nRepeat for your desired number of repetitions.</item>
+        <item>Securely hold the E–Z curl bar at the close grip (inner handle). Your palms should be facing forward, slightly tilted inwards due to the bar’s design. This grip design reduces wrist strain and provides better bicep engagement.
+            \n\nWith your upper arms and chest against the preacher bench pad, hold the E–Z Curl Bar at shoulder length. This eliminates momentum, ensuring a strict curling motion.
+            \n\nExhale and engage your biceps to curl the weight upwards. Once fully contracted, hold for a few seconds, emphasizing the contraction.
+            \n\nInhale as you slowly lower the bar, fully stretching the biceps.
+            \n\nContinue for 10–15 reps or until failure.</item>
+        <item>Stand up with your torso upright while holding a barbell at shoulder width with the elbows close to the torso. The palm of your hands should be facing down (pronated grip). This will be your starting position.
+            \n\nWhile holding the upper arms stationary, curl the weights while contracting the biceps as you breathe out. Only the forearms should move.
+            \n\nSlowly begin to bring the bar back to starting position as your breathe in.
+            \n\nRepeat for the recommended amount of repetitions.</item>
+        <item>Stand with your feet around shoulder-width apart, holding a dumbbell in each hand by your sides, palms facing inwards.
+            \n\nEngage your core and squeeze your glutes to provide a strong base, and then raise your arms out to the sides, stopping when your arms are parallel with the floor.
+            \n\nAt the top of the exercise, your arms should be slightly in front of your torso, and your elbows should have a soft bend.
+            \n\nPause before slowly lowering back to starting position.</item>
+        <item>Stand with the bar on your front shoulders, and your hands next to your shoulders.
+            \n\nPress the bar over your head, until it’s balanced over your shoulders and mid-foot.
+            \n\nLock your elbows at the top, and shrug your shoulders to the ceiling.</item>
+        <item>Reach up and grasp the handles with both hands with your palms facing in. Step back until your arms are fully extended, then engage your core and lean back slightly, positioning your body at a roughly 20-degree angle.
+            \n\nPull the rope toward you just enough to start lifting the weight from the stack, then engage your shoulders, rolling them back to create good posture—you do not want your shoulders hunching or rolling forward.
+            \n\nPull the handles of the attachment straight toward your forehead. Keep your palms facing in as your elbows flare outward toward the sides, engaging the rear delts.
+            \n\nReverse the movement and slowly extend your arms without allowing your shoulders or chest to roll forward as you extend.</item>
+    </string-array>
+    <string-array name="muscle_group_legs_exercises">
+        <item>Squat</item>
+        <item>Romanian Deadlift</item>
+        <item>Bulgarian Split Squat</item>
+        <item>Leg extension</item>
+        <item>Standing Calf Raise</item>
+        <item>Seated Calf Raise</item>
+        <item>Hack Squat</item>
+        <item>Lying Leg Curl</item>
+    </string-array>
+    <string-array name="muscle_group_legs_exercises_description">
+        <item>If you’re looking to pack on lower-body bulk, your first port of call will always be the king of leg exercises: the squat. The squat is your one way ticket to bulking up your legs and receiving a whole host of other health benefits.</item>
+        <item>The Romanian deadlift (RDL) should be a staple in (almost) everyone’s training program. Whether your goals align with physique development, enhancement of athletic performance, or general health, the RDL is a tool worth having in your arsenal.</item>
+        <item>The Bulgarian split squat is a version of a single-leg squat where the back leg is elevated on a bench or a sturdy chair. As a single-leg, unilateral squat, the exercise focuses more on the quadriceps than other, similar lower-body compound movements.</item>
+        <item>Leg extensions are exercises usually done with a lever machine. You sit on a padded seat and raise a padded bar with your legs. The exercise works mainly the quadriceps muscles of the front of the thigh—the rectus femoris and the vastus muscles. You can use this exercise to build lower body strength and muscle definition as part of a strength training workout.</item>
+        <item>The calves are often ignored when it comes to weight training, but they’re an instrumental part of many activities—from walking and running to jumping and reaching. Add standing calf raises to your lower body workout to make all of these actions easier.</item>
+        <item>The seated calf raise is a variation of the machine calf raise and an exercise used to isolate the muscles of the calves. The calves can be a stubborn muscle group for a lot of people, so it’s important to experiment with several different angles when performing calf raises. You may also want to consider training the calves with a high training frequency.</item>
+        <item>Looking for killer gams? Don’t overlook the hack squat, which can provide just what you need. A hack squat works the entire lower body — including the glutes, hamstrings, quads, and calves — as well as the core. An emphasis on the quads means the front of your legs will be feeling it afterward.</item>
+        <item>Lying leg curls (also known in the short form, leg curls) is an isolation exercise that targets the back of the leg: the hamstrings and calf muscles. It can be performed in a variety of positions and makes an excellent addition to most any lower body strength training workout.</item>
+    </string-array>
+    <string-array name="muscle_group_legs_exercises_instructions">
+        <item>Stand with your feet a little wider than your hips.
+            \n\nKeep your chest proud and your core locked.
+            \n\nSink your hips back and descend into a squat whilst the knees travel in line with the toes.
+            \n\nAt the bottom of the squat, the thighs should hit parallel or lower and your elbows should come in between your knees.
+            \n\nDrive back up, driving through the heels and tensing your glutes at the top. Repeat.</item>
+        <item>Start standing tall with your feet underneath your hips. Hold your weight (dumbbells or a barbell) in front of your thighs.
+            \n\nSend your hips behind your heels with a flat back as if you are shutting a car door with your backside. Keep the knees directly above your heels and shins vertical to the floor.
+            \n\nAs you lower the weight, keep your shoulder blades drawn towards each other and head in line.
+            \n\nFeel a stretch in your hamstrings. When the weight is below your knees, send your hips forward to return to the starting position.</item>
+        <item>Stand 2 to 3 feet in front of a knee-high platform. Extend your right leg behind you and rest your toes on the bench. Toes can be flat or tucked, according to personal preference. Square your hips and shoulders.
+            \n\nKeeping your torso upright, slowly lower your right knee toward the floor. Your front knee will form approximately a 90-degree angle. Tip: Maintain evenly distributed weight in your whole foot. Don’t shift forward on the toes or exaggerate pushing through the heel.
+            \n\nReverse the move and return to the starting position.</item>
+        <item>Place your hands on the hand bars.
+            \n\nLift the weight while exhaling until your legs are almost straight. Do not lock your knees. Keep your back against the backrest and do not arch your back.
+            \n\nExhale and lower the weight back to starting position.
+            \n\nDo three sets of eight to 12 repetitions.</item>
+        <item>Raise your heels slowly, keeping your knees extended (but not locked).
+            \n\nPause for one second when you are standing as much on the tips of your toes as you can.
+            \n\nLower your heels back to the ground, returning to the starting position. </item>
+        <item>Take a seat on the machine and place the balls of your feet on the platform with your toes pointed forward - your heels will naturally hang off. Position the base of quads under the knee pad and allow your hands to rest on top.
+            \n\nExtend your ankles and release the safety bar.
+            \n\nLower the heels by dorsiflexing the ankles until the calves are fully stretched.
+            \n\nExtend the ankles and exhale as you flex the calves.
+            \n\nRepeat for the assigned number of repetitions.</item>
+        <item>Load the machine with your desired amount of weight. As a beginner, it’s recommended to get familiar with the movement of the machine before adding a bunch of plates.
+            \n\nStep into the machine, placing your feet shoulder-width apart and your shoulders and back against the pads.
+            \n\nRelease the safety handles, inhale, and lower down, bending your knees until they reach a 90-degree angle.
+            \n\nPause here, then push up through the back of your feet to extend your legs back to the starting position.</item>
+        <item>Exhale and flex your knees, pulling your ankles as close to your buttocks as possible. Keep your hips firmly on the bench.
+            \n\nHold briefly.
+            \n\nInhale as you return your feet to the starting position in a slow and controlled movement.</item>
     </string-array>
 </resources>

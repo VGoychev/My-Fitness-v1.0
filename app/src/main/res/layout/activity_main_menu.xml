@@ -7,29 +7,12 @@
     android:background="@color/MyFitnessDefault"
     tools:context=".MainMenu">
 
-    <Button
-        android:id="@+id/btnStepC"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/custom_button"
-        android:backgroundTint="@color/gray"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:onClick="btnStepClick"
-        android:text="@string/btnSC"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnMC"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/custom_button"
         android:backgroundTint="@color/gray"
         android:fontFamily="sans-serif-condensed-medium"
@@ -39,6 +22,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
@@ -46,15 +30,17 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:backgroundTint="@color/gray"
         android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="btnFNClick"
         android:text="@string/btnFN"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMC" />
 
@@ -102,6 +88,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
+        android:onClick="btnGuidesClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRec" />
@@ -120,37 +107,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/height1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="185dp"
-        android:text="@string/height"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
 
-    <TextView
-        android:id="@+id/weight1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="@string/weight"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/height1"
-        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/age1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="-4dp"
         android:text="@string/age"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/height1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
         android:id="@+id/gender1"
@@ -162,21 +131,47 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/weight1"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuides"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/weight1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/weight"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/height1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/height1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="204dp"
+        android:text="@string/height"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
 
     <Button
         android:id="@+id/btnEdit"
-        android:layout_width="105dp"
+        android:layout_width="60dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/edit"
-        android:textSize="8sp"
+        android:layout_margin="4dp"
+        android:background="@drawable/custom_button"
         android:onClick="btnEditClick"
+        android:text="Edit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/gender1"
         app:layout_constraintEnd_toStartOf="@+id/image"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides"
         app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

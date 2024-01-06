@@ -155,20 +155,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (enterHeight != null) {
-            enterHeight.setText("");
-        }
-        if (enterWeight != null) {
-            enterWeight.setText("");
-        }
-        if (enterAge != null) {
-            enterAge.setText("");
-        }
-        if (radioGroup != null) {
-            radioGroup.clearCheck();
-        }
-    }
 }
+
+

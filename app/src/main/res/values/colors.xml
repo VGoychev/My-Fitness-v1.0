@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#FF7A7E88</color>
     <color name="MyFitnessDefault">#FF33353E</color>
+    <color name="RecipeCard">#FF42444E</color>
 </resources>
