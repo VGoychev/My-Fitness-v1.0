@@ -165,7 +165,9 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         recyclerViewAdapter.setExerciseInterface(this);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Workout.SwipeToDeleteCallback());
+        ItemTouchHelper itemTouchHelper1 = new ItemTouchHelper(new Workout.DragAndDropCallback());
         itemTouchHelper.attachToRecyclerView(recyclerView);
+        itemTouchHelper1.attachToRecyclerView(recyclerView);
     }
     private void loadExerciseList() {
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
@@ -177,6 +179,25 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
             recyclerViewAdapter.notifyDataSetChanged();
         } else {
             Log.e("WorkoutActivity", "No workout ID found in the intent");
+        }
+    }
+    private class DragAndDropCallback extends ItemTouchHelper.SimpleCallback{
+        DragAndDropCallback(){
+            super(ItemTouchHelper.UP | ItemTouchHelper.DOWN,0);
+        }
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+
+            // Notify the adapter of the move
+            recyclerViewAdapter.moveExerciseItem(fromPosition, toPosition);
+            return true;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
         }
     }
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {

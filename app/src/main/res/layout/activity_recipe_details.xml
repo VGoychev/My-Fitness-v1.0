@@ -11,7 +11,8 @@
         app:title="Recipe Details"
         app:titleTextColor="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/RecipeCard">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -33,10 +34,12 @@
                 android:textSize="20sp"
                 android:gravity="center"
                 android:padding="8dp"
+                android:layout_margin="4dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/gray"/>
             <TextView
                 android:id="@+id/textView_meal_source"
                 android:text="Source"
@@ -53,28 +56,27 @@
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"/>
-            <Button
-                android:id="@+id/button_nutrition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                android:text="@string/nutritions"
-                android:textAllCaps="true"
-                android:background="@drawable/custom_button"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-                <TextView
+            <TextView
                 android:id="@+id/textView_meal_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:maxLines="2"
+                android:maxLines="3"
                 android:padding="8dp"
                 android:text="Summary"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="normal" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Instructions"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="8dp"-->
+<!--                android:layout_margin="4dp" />-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_meal_instructions"
                 android:layout_margin="8dp"
@@ -86,9 +88,10 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:padding="8dp"
+                android:layout_margin="4dp"
                 android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_meal_similar"
                 android:layout_margin="8dp"
