@@ -11,12 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mystepscounter.R;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHolder> {
     private List<ExerciseItem> exerciseList;
     private Context context;
     private ExerciseInterface exerciseInterface;
+    public void moveExerciseItem(int fromPosition, int toPosition) {
+        Collections.swap(exerciseList, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+    }
     public void setExerciseInterface(ExerciseInterface exerciseInterface) {
         this.exerciseInterface = exerciseInterface;
     }

@@ -1,24 +1,16 @@
 package com.example.mystepscounter;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.util.Log;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mystepscounter.RecipeListeners.InstructionsListener;
-import com.example.mystepscounter.RecipeListeners.NutritionLabelResponseListener;
 import com.example.mystepscounter.RecipeListeners.RandomRecipeResponseListener;
 import com.example.mystepscounter.RecipeListeners.RecipeDetailsListener;
 import com.example.mystepscounter.RecipeListeners.SimilarRecipeListener;
 import com.example.mystepscounter.RecipesModels.InstructionResponse;
-import com.example.mystepscounter.RecipesModels.NutritionLabelResponse;
 import com.example.mystepscounter.RecipesModels.RandomRecipeApiResponse;
 import com.example.mystepscounter.RecipesModels.RecipeDetailsResponse;
 import com.example.mystepscounter.RecipesModels.SimilarRecipeResponse;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Request;
 
 import java.util.List;
 
@@ -40,21 +32,14 @@ public class RequestManager_Recipes {
             .build();
     OkHttpClient client = new OkHttpClient();
 
-//    Gson gson = new GsonBuilder()
-//            .setLenient()
-//            .create();
-//
-//    OkHttpClient client = new OkHttpClient.Builder()
-//            .retryOnConnectionFailure(true)
-//            .build();
-//    Retrofit retrofit = new Retrofit.Builder()
-//            .baseUrl("https://api.spoonacular.com/")
-//            .client(client)
-//            .addConverterFactory(GsonConverterFactory.create(gson))
-//            .build();
 
     public RequestManager_Recipes(Context context) {
         this.context = context;
+    }
+    private TextView textViewNutritionInfo;
+
+    public void setTextViewNutritionInfo(TextView textViewNutritionInfo) {
+        this.textViewNutritionInfo = textViewNutritionInfo;
     }
 
     public void getRandomRecipes(RandomRecipeResponseListener listener, List<String> tags){
@@ -87,6 +72,7 @@ public class RequestManager_Recipes {
                     return;
                 }
                 listener.didFetch(response.body(), response.message());
+
             }
 
             @Override
@@ -95,7 +81,6 @@ public class RequestManager_Recipes {
             }
         });
     }
-
     public void getSimilarRecipes(SimilarRecipeListener listener, int id){
         CallSimilarRecipes callSimilarRecipes = retrofit.create(CallSimilarRecipes.class);
         Call<List<SimilarRecipeResponse>> call = callSimilarRecipes.callSimilarRecipe(id, "4", context.getString(R.string.api_key));
@@ -136,29 +121,6 @@ public class RequestManager_Recipes {
             }
         });
     }
-    public void getNutritionLabelImage(NutritionLabelResponseListener listener, int id) {
-        NutritionLabelService nutritionLabelService = retrofit.create(NutritionLabelService.class);
-        Call<NutritionLabelResponse> call = nutritionLabelService.getNutritionLabel(id, context.getString(R.string.api_key));
-
-        call.enqueue(new Callback<NutritionLabelResponse>() {
-            @Override
-            public void onResponse(Call<NutritionLabelResponse> call, Response<NutritionLabelResponse> response) {
-                if (!response.isSuccessful()) {
-                    listener.didError(response.message());
-                    return;
-                }
-                listener.didFetch(response.body(), response.message());
-            }
-
-
-            @Override
-            public void onFailure(Call<NutritionLabelResponse> call, Throwable t) {
-                listener.didError(t.getMessage());
-            }
-        });
-    }
-
-
 
     private interface CallRandomRecipes{
         @GET("recipes/random")
@@ -175,7 +137,6 @@ public class RequestManager_Recipes {
                 @Query("apiKey") String apiKey
         );
     }
-
     private interface CallSimilarRecipes{
         @GET("recipes/{id}/similar")
         Call<List<SimilarRecipeResponse>> callSimilarRecipe(
@@ -187,13 +148,6 @@ public class RequestManager_Recipes {
     private interface CallInstructions{
         @GET("recipes/{id}/analyzedInstructions")
         Call<List<InstructionResponse>> callInstructions(
-                @Path("id") int id,
-                @Query("apiKey") String apiKey
-        );
-    }
-    private interface NutritionLabelService{
-        @GET("recipes/{id}/nutritionLabel.png")
-        Call<NutritionLabelResponse> getNutritionLabel(
                 @Path("id") int id,
                 @Query("apiKey") String apiKey
         );

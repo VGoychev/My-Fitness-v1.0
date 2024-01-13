@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,21 +17,18 @@ import com.example.mystepscounter.RecipeAdapters.InstructionsAdapter;
 //import com.example.mystepscounter.RecipeAdapters.NutritionLabelAdapter;
 import com.example.mystepscounter.RecipeAdapters.SimilarRecipeAdapter;
 import com.example.mystepscounter.RecipeListeners.InstructionsListener;
-import com.example.mystepscounter.RecipeListeners.NutritionLabelResponseListener;
 import com.example.mystepscounter.RecipeListeners.RecipeClickListener;
 import com.example.mystepscounter.RecipeListeners.RecipeDetailsListener;
 import com.example.mystepscounter.RecipeListeners.SimilarRecipeListener;
 import com.example.mystepscounter.RecipesModels.InstructionResponse;
-import com.example.mystepscounter.RecipesModels.NutritionLabelResponse;
 import com.example.mystepscounter.RecipesModels.RecipeDetailsResponse;
 import com.example.mystepscounter.RecipesModels.SimilarRecipeResponse;
 import com.squareup.picasso.Picasso;
 import java.util.List;
+import java.util.Locale;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
     int id;
-    String imageUrl;
-    Button button_nutrition;
     TextView textView_meal_name, textView_meal_source, textView_meal_summary;
     ImageView imageView_meal_image;
     RecyclerView recycler_meal_ingredients, recycler_meal_similar, recycler_meal_instructions;
@@ -61,13 +55,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading Details...");
         dialog.show();
-        button_nutrition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                manager.getNutritionLabelImage(nutritionLabelResponseListener, id);
-            }
-        });
     }
     private void findViews() {
         textView_meal_name = findViewById(R.id.textView_meal_name);
@@ -77,7 +64,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         recycler_meal_ingredients = findViewById(R.id.recycler_meal_ingredients);
         recycler_meal_similar = findViewById(R.id.recycler_meal_similar);
         recycler_meal_instructions = findViewById(R.id.recycler_meal_instructions);
-        button_nutrition = findViewById(R.id.button_nutrition);
     }
     private final RecipeDetailsListener recipeDetailsListener = new RecipeDetailsListener() {
         @Override
@@ -135,26 +121,4 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
         }
    };
-    private final NutritionLabelResponseListener nutritionLabelResponseListener = new NutritionLabelResponseListener() {
-        @Override
-        public void didFetch(NutritionLabelResponse response, String message) {
-            showImageInDialog(response);
-
-        }
-
-        @Override
-        public void didError(String errorMessage) {
-            Toast.makeText(RecipeDetailsActivity.this, errorMessage, Toast.LENGTH_LONG).show();
-        }
-    };
-    private void showImageInDialog(NutritionLabelResponse response) {
-        Dialog dialog = new Dialog(RecipeDetailsActivity.this);
-        dialog.setContentView(R.layout.dialog_layout); // Create a dialog layout with an ImageView
-        ImageView nutritionImageView = dialog.findViewById(R.id.nutritionImageView);
-
-        // Load image into the ImageView using Picasso
-        Picasso.get().load(response.getImageUrl()).into(nutritionImageView);
-
-        dialog.show();
-    }
 }
