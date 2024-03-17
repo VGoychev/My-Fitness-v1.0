@@ -190,7 +190,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
             int fromPosition = viewHolder.getAdapterPosition();
             int toPosition = target.getAdapterPosition();
 
-            // Notify the adapter of the move
             recyclerViewAdapter.moveExerciseItem(fromPosition, toPosition);
             return true;
         }

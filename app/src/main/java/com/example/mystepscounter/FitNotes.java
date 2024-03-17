@@ -145,7 +145,7 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
             int fromPosition = viewHolder.getAdapterPosition();
             int toPosition = target.getAdapterPosition();
 
-            // Notify the adapter of the move
+
             recyclerViewAdapter.moveWorkoutItem(fromPosition, toPosition);
             return true;
         }
