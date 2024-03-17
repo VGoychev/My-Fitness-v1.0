@@ -24,6 +24,11 @@ import com.example.mystepscounter.RecipesModels.InstructionResponse;
 import com.example.mystepscounter.RecipesModels.RecipeDetailsResponse;
 import com.example.mystepscounter.RecipesModels.SimilarRecipeResponse;
 import com.squareup.picasso.Picasso;
+
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+import org.w3c.dom.Document;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -71,7 +76,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             dialog.dismiss();
             textView_meal_name.setText(response.title);
             textView_meal_source.setText(response.sourceName);
-            textView_meal_summary.setText(response.summary);
+//            textView_meal_summary.setText(response.summary);
+            String cleanedSummary = cleanHtmlSymbols(response.summary);
+            textView_meal_summary.setText(cleanedSummary);
             Picasso.get().load(response.image).into(imageView_meal_image);
 
             recycler_meal_ingredients.setHasFixedSize(true);
@@ -85,6 +92,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
         }
     };
+    private String cleanHtmlSymbols(String html) {
+        // Parse the HTML and clean it
+        String cleanedText = Jsoup.clean(html, Whitelist.none());
+        return cleanedText;
+    }
     private final SimilarRecipeListener similarRecipeListener = new SimilarRecipeListener() {
         @Override
         public void didFetch(List<SimilarRecipeResponse> response, String message) {

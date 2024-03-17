@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (height <= 40 || height > 250) {
 
-            enterHeight.setError("Cant be less than 40 cm or more than 250 cm");
+            enterHeight.setError("Cant be 40 cm or less and more than 250 cm");
             return false;
         }
         return true;
@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
-
         if (sp.contains("height") && sp.contains("weight") && sp.contains("age") && sp.contains("gender")) {
             // Values are stored, navigate to MainMenu directly
             Intent intent = new Intent(MainActivity.this, MainMenu.class);
@@ -156,5 +155,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-
