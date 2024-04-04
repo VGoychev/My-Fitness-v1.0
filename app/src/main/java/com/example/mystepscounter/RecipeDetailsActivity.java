@@ -76,7 +76,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             dialog.dismiss();
             textView_meal_name.setText(response.title);
             textView_meal_source.setText(response.sourceName);
-//            textView_meal_summary.setText(response.summary);
             String cleanedSummary = cleanHtmlSymbols(response.summary);
             textView_meal_summary.setText(cleanedSummary);
             Picasso.get().load(response.image).into(imageView_meal_image);
@@ -93,7 +92,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         }
     };
     private String cleanHtmlSymbols(String html) {
-        // Parse the HTML and clean it
         String cleanedText = Jsoup.clean(html, Whitelist.none());
         return cleanedText;
     }
