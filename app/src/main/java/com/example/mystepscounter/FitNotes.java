@@ -173,7 +173,6 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         }
     }
     private void deleteItem(WorkoutItem workoutItem) {
-        // Remove item from RecyclerView
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         database.workoutDao().delete(workoutItem);
         recyclerViewAdapter.removeItem(workoutItem);
