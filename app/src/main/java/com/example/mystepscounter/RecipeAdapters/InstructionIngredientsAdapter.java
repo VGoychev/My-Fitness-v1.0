@@ -1,6 +1,7 @@
 package com.example.mystepscounter.RecipeAdapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mystepscounter.R;
 import com.example.mystepscounter.RecipesModels.Ingredient;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,8 +38,8 @@ public class InstructionIngredientsAdapter extends RecyclerView.Adapter<Instruct
     public void onBindViewHolder(@NonNull InstructionIngredientsViewHolder holder, int position) {
         holder.textView_instructions_step_item.setText(list.get(position).name);
         holder.textView_instructions_step_item.setSelected(true);
-        Picasso.get().load("https://spoonacular.com/cdn/ingredients_100x100/"+list.get(position).image).into(holder.imageView_instructions_step_items);
-
+        String imageUrl = list.get(position).image;
+        Picasso.get().load(imageUrl).into(holder.imageView_instructions_step_items);
     }
 
     @Override
