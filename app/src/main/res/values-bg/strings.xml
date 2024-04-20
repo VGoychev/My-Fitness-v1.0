@@ -12,6 +12,8 @@
     <string name="btnMC">Калкулатор на Макросите</string>
     <string name="btnFN">Бележки за Тренировки</string>
     <string name="btnRec">Рецепти</string>
+    <string name="add">Добави</string>
+    <string name="btnEdit">Редактиране</string>
     <string name="btnGuides">Ръководство за Упражнения</string>
     <string name="Choose">Избери храна :</string>
     <string name="age">Възраст:</string>

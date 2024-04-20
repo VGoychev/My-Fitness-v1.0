@@ -17,6 +17,7 @@ import java.util.Locale;
 
 public class MainMenu extends AppCompatActivity {
 Button btnMC , btnFN , btnRec , btnGuides, btnEdit, languageButton;
+SharedPreferences sp;
     public void btnFNClick(View view) {
         Intent intent = new Intent(this, FitNotes.class);
         startActivity(intent);
@@ -42,12 +43,30 @@ Button btnMC , btnFN , btnRec , btnGuides, btnEdit, languageButton;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public static final String PREF_SELECTED_LANGUAGE = "selected_language";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        sp = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
+        String selectedLanguage = sp.getString(PREF_SELECTED_LANGUAGE, "");
+//        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main_menu);
+//        setContentView(R.layout.activity_main_menu);
+        if (!selectedLanguage.isEmpty()) {
+            Locale newLocale = new Locale(selectedLanguage);
+            Locale.setDefault(newLocale);
+            Configuration configuration = getResources().getConfiguration();
+            configuration.setLocale(newLocale);
+            Context context = createConfigurationContext(configuration);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main_menu);
+        } else {
+            // If no language preference is saved, proceed with the default onCreate() behavior
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main_menu);
+        }
         TextView age1 , height1 , weight1 , gender1;
         age1 = (TextView) findViewById(R.id.age1);
         height1 = (TextView) findViewById(R.id.height1);
@@ -58,15 +77,27 @@ Button btnMC , btnFN , btnRec , btnGuides, btnEdit, languageButton;
         btnRec = (Button) findViewById(R.id.btnRec);
         btnGuides = (Button) findViewById(R.id.btnGuides);
         btnEdit = (Button) findViewById(R.id.btnEdit);
-        SharedPreferences sp = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
+
+//        if (!selectedLanguage.isEmpty()) {
+//            // Update app's locale based on saved language
+//            Locale newLocale = new Locale(selectedLanguage);
+//            Locale.setDefault(newLocale);
+//            Configuration config = new Configuration();
+//            config.locale = newLocale;
+//            getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+//        }
         String height = sp.getString("height" , "");
         String weight = sp.getString("weight" , "");
         String age = sp.getString("age" , "");
         String gender= sp.getString("gender", "");
-        gender1.setText("Gender: " + gender);
-        age1.setText("Age: " + age);
-        height1.setText("Height(cm): " + height);
-        weight1.setText("Weight(kg): " + weight);
+//        gender1.setText("Gender: " + gender);
+//        age1.setText("Age: " + age);
+//        height1.setText("Height(cm): " + height);
+//        weight1.setText("Weight(kg): " + weight);
+        gender1.setText(getString(R.string.gender) + " " + gender);
+        age1.setText(getString(R.string.age) + " " + age);
+        height1.setText(getString(R.string.height) + " " + height);
+        weight1.setText(getString(R.string.weight) + " " + weight);
 
         languageButton = findViewById(R.id.btn_language);
         languageButton.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +119,30 @@ Button btnMC , btnFN , btnRec , btnGuides, btnEdit, languageButton;
         Configuration config = new Configuration();
         config.locale = newLocale;
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(PREF_SELECTED_LANGUAGE, newLocale.getLanguage());
+        String currentGender = sp.getString("gender", "");
+
+        Log.d("SwitchLanguage", "Current gender value: " + currentGender);
+
+        if (newLocale.getLanguage().equals("bg")) {
+            if ("Male".equals(currentGender)) {
+                currentGender = "Мъж";
+            } else if ("Female".equals(currentGender)) {
+                currentGender = "Жена";
+            }
+        } else { // English language
+            if ("Мъж".equals(currentGender)) {
+                currentGender = "Male";
+            } else if ("Жена".equals(currentGender)) {
+                currentGender = "Female";
+            }
+        }
+
+        editor.putString("gender", currentGender);
+        editor.apply();
+        Log.d("SwitchLanguage", "Gender value updated to: " + sp.getString("gender", ""));
         Log.d("SwitchLanguage", "Switching language to " + newLocale.getLanguage());
 
         // Restart MainActivity to apply changes (optional)

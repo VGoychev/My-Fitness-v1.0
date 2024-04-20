@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Macros Calculator"
+            android:text="@string/btnMC"
             android:scaleY="1.5"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -62,7 +62,7 @@
             android:background="@drawable/custom_button"
             android:backgroundTint="@color/gray"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Add"
+            android:text="@string/add"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15sp" />

@@ -1,5 +1,7 @@
 package com.example.mystepscounter;
 
+import static com.example.mystepscounter.MainMenu.PREF_SELECTED_LANGUAGE;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -90,14 +92,31 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+//    String PREF_SELECTED_LANGUAGE = "selected_language";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+//        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+//        setContentView(R.layout.activity_main);
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
+        String selectedLanguage = sp.getString(PREF_SELECTED_LANGUAGE, "");
+        if (!selectedLanguage.isEmpty()) {
+            Locale newLocale = new Locale(selectedLanguage);
+            Locale.setDefault(newLocale);
+            Configuration configuration = getResources().getConfiguration();
+            configuration.setLocale(newLocale);
+            Context context = createConfigurationContext(configuration);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+        } else {
+            // If no language preference is saved, proceed with the default onCreate() behavior
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+        }
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         if (sp.contains("height") && sp.contains("weight") && sp.contains("age") && sp.contains("gender")) {
             // Values are stored, navigate to MainMenu directly
             Intent intent = new Intent(MainActivity.this, MainMenu.class);
@@ -135,7 +154,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.d("LanguageButton", "Language button clicked"); // Log message
-
+                    if (radioMale.isChecked()) {
+                        selectedRadiobut = "Male";
+                    } else if (radioFemale.isChecked()) {
+                        selectedRadiobut = "Female";
+                    }
                     // Implement language switch logic here
                     switchLanguage();
                 }
@@ -151,6 +174,26 @@ public class MainActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.locale = newLocale;
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(PREF_SELECTED_LANGUAGE, newLocale.getLanguage());
+        if (newLocale.getLanguage().equals("bg")) {
+            if ("Male".equals(selectedRadiobut)) {
+                editor.putString("gender", "Мъж");
+            } else if ("Female".equals(selectedRadiobut)) {
+                editor.putString("gender", "Жена");
+            }
+            // Add more translations as needed
+        } else { // English language
+            if ("мъж".equals(selectedRadiobut)) {
+                editor.putString("gender", "Male");
+            } else if ("жена".equals(selectedRadiobut)) {
+                editor.putString("gender", "Female");
+            }
+            // Add more translations as needed
+        }
+        editor.apply();
+
         Log.d("SwitchLanguage", "Switching language to " + newLocale.getLanguage());
 
         // Restart MainActivity to apply changes (optional)
