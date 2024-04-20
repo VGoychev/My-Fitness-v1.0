@@ -49,9 +49,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_recipe_details);
-
         findViews();
-
         id = Integer.parseInt(getIntent().getStringExtra("id"));
         manager = new RequestManager_Recipes(this);
         manager.getRecipeDetails(recipeDetailsListener, id);
@@ -78,7 +76,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             textView_meal_source.setText(response.sourceName);
             String cleanedSummary = cleanHtmlSymbols(response.summary);
             textView_meal_summary.setText(cleanedSummary);
-//            textView_meal_summary.setText(response.summary);
             Picasso.get().load(response.image).into(imageView_meal_image);
 
             recycler_meal_ingredients.setHasFixedSize(true);
@@ -86,7 +83,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             ingredientsAdapter = new IngredientsAdapter(RecipeDetailsActivity.this, response.extendedIngredients);
             recycler_meal_ingredients.setAdapter(ingredientsAdapter);
         }
-
         @Override
         public void didError(String message) {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -104,7 +100,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             similarRecipeAdapter = new SimilarRecipeAdapter(RecipeDetailsActivity.this, response, recipeClickListener);
             recycler_meal_similar.setAdapter(similarRecipeAdapter);
         }
-
         @Override
         public void didError(String message) {
             Toast.makeText(RecipeDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -117,7 +112,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     .putExtra("id", id));
         }
     };
-
    private final InstructionsListener instructionsListener = new InstructionsListener() {
        @Override
         public void didFetch(List<InstructionResponse> response, String message) {
@@ -126,10 +120,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
            instructionsAdapter = new InstructionsAdapter(RecipeDetailsActivity.this, response);
            recycler_meal_instructions.setAdapter(instructionsAdapter);
        }
-
         @Override
        public void didError(String message) {
-
         }
    };
 }

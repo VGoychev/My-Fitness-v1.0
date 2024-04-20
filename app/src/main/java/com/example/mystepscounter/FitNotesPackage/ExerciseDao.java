@@ -17,5 +17,4 @@ public interface ExerciseDao {
     void insertExerciseItem(ExerciseItem... exerciseItems);
     @Delete
     void delete(ExerciseItem exerciseItem);
-
 }

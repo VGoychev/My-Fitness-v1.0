@@ -41,16 +41,12 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_workout);
-
         btnAddExercise = findViewById(R.id.btnAddExercise);
         recyclerView = findViewById(R.id.recycler_exercise);
         textViewWorkoutName = findViewById(R.id.textView_workoutName);
         textViewInstructions = findViewById(R.id.textViewInstructions);
-
         String selectedWorkoutName = getIntent().getStringExtra("WORKOUT_NAME");
-
         textViewWorkoutName.setText(selectedWorkoutName);
-
         btnAddExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,9 +69,7 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_add_exercise, null);
         builder.setView(dialogView);
-
         final EditText exerciseNameEditText = dialogView.findViewById(R.id.editText_exercise_name);
-
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -88,7 +82,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
                         recyclerViewAdapter.notifyDataSetChanged();
                         updateInstructionsVisibility();
                     } else {
-
                     }
                 }
                 dialog.dismiss();
@@ -100,7 +93,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
                 dialog.dismiss();
             }
         });
-
         AlertDialog dialog = builder.create();
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
@@ -110,8 +102,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
 
                 positiveButton.setTextColor(getResources().getColor(R.color.white));
                 negativeButton.setTextColor(getResources().getColor(R.color.white));
-
-
             }
         });
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
@@ -119,7 +109,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.getWindow().setAttributes(layoutParams);
-
         dialog.show();
     }
     private void updateInstructionsVisibility() {
@@ -130,11 +119,9 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         }
     }
     private void deleteItem(ExerciseItem exerciseItem) {
-
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         database.exerciseDao().delete(exerciseItem);
         recyclerViewAdapter.removeExerciseItem(exerciseItem);
-
     }
     private void saveNewExercise(String exerciseName, int workoutId) {
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
@@ -152,7 +139,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
     public void initRecyclerView() {
@@ -163,7 +149,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         recyclerViewAdapter = new ExerciseAdapter(this);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.setExerciseInterface(this);
-
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Workout.SwipeToDeleteCallback());
         ItemTouchHelper itemTouchHelper1 = new ItemTouchHelper(new Workout.DragAndDropCallback());
         itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -193,10 +178,8 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
             recyclerViewAdapter.moveExerciseItem(fromPosition, toPosition);
             return true;
         }
-
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
         }
     }
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
@@ -209,7 +192,6 @@ public class Workout extends AppCompatActivity implements ExerciseInterface {
         }
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
             int position = viewHolder.getAdapterPosition();
             ExerciseItem deletedItem = recyclerViewAdapter.getExerciseList().get(position);
             deleteItem(deletedItem);

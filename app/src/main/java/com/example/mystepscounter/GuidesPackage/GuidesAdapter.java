@@ -31,14 +31,12 @@ public class GuidesAdapter extends RecyclerView.Adapter<GuidesAdapter.MyViewHold
         View view = inflater.inflate(R.layout.list_exercise_group, parent, false);
         return new GuidesAdapter.MyViewHolder(view, guidesInterface);
     }
-
     @Override
     public void onBindViewHolder(@NonNull GuidesAdapter.MyViewHolder holder, int position) {
         holder.textView.setText(guidesModels.get(position).getMuscle_group_exercise_name());
         holder.imageView.setImageResource(guidesModels.get(position).getImage_muscle_group());
 
     }
-
     @Override
     public int getItemCount() {
         return guidesModels.size();
@@ -46,7 +44,6 @@ public class GuidesAdapter extends RecyclerView.Adapter<GuidesAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView textView;
-
         public MyViewHolder(@NonNull View itemView, GuidesInterface guidesInterface) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView_muscle_group);

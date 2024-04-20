@@ -21,19 +21,15 @@ import java.util.List;
 public class InstructionIngredientsAdapter extends RecyclerView.Adapter<InstructionIngredientsViewHolder>{
     Context context;
     List<Ingredient> list;
-
     public InstructionIngredientsAdapter(Context context, List<Ingredient> list) {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public InstructionIngredientsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new InstructionIngredientsViewHolder(LayoutInflater.from(context).inflate(R.layout.list_instructions_step_items, parent, false));
-
     }
-
     @Override
     public void onBindViewHolder(@NonNull InstructionIngredientsViewHolder holder, int position) {
         holder.textView_instructions_step_item.setText(list.get(position).name);
@@ -41,7 +37,6 @@ public class InstructionIngredientsAdapter extends RecyclerView.Adapter<Instruct
         String imageUrl = list.get(position).image;
         Picasso.get().load(imageUrl).into(holder.imageView_instructions_step_items);
     }
-
     @Override
     public int getItemCount() {
         return list.size();

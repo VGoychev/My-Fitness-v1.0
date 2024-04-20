@@ -7,7 +7,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
 @Dao
 public interface SetDao {
     @Query("SELECT * FROM setitem WHERE exercise_id = :exerciseId")

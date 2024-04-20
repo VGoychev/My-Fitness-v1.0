@@ -55,10 +55,8 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
     @NonNull
     @Override
     public SetAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.list_sets, parent, false);
-
         return new ViewHolder(view);
     }
 
@@ -66,20 +64,15 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull SetAdapter.ViewHolder holder, int position) {
         SetItem set = setList.get(position);
         holder.textView_setNumber.setText(String.valueOf(position + 1));
-
         holder.editText_rep.setTag(position);
-
         holder.editText_rep.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // Not needed for your implementation
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 int adapterPosition = (int) holder.editText_rep.getTag();
-
-                // Not needed for your implementation
                 String newValueStr = charSequence.toString();
                 try {
                     int newValue = Integer.parseInt(newValueStr);
@@ -89,14 +82,12 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
                         itemChangeListener.onRepValueChanged(adapterPosition, newValue);
                     }
                 } catch (NumberFormatException e) {
-                    // Handle invalid input if needed
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 int adapterPosition = (int) holder.editText_rep.getTag();
-
                 String newValueStr = editable.toString();
                 try {
                     int newValue = Integer.parseInt(newValueStr);
@@ -106,7 +97,6 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
                         itemChangeListener.onRepValueChanged(adapterPosition, newValue);
                     }
                 } catch (NumberFormatException e) {
-                    // Handle invalid input if needed
                 }
             }
         });
@@ -114,9 +104,7 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
         holder.editText_weight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // Not needed for your implementation
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 int adapterPosition = (int) holder.editText_rep.getTag();
@@ -131,10 +119,8 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
                         itemChangeListener.onWeightValueChanged(adapterPosition, newValue);
                     }
                 } catch (NumberFormatException e) {
-                    // Handle invalid input if needed
                 }
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 int adapterPosition = (int) holder.editText_rep.getTag();
@@ -142,21 +128,16 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
                 try {
                     double newValue = Double.parseDouble(newValueStr);
                     if (adapterPosition >= 0 && adapterPosition < setList.size()) {
-
                         setList.get(adapterPosition).setStoredWeight(newValue);
                         itemChangeListener.onWeightValueChanged(adapterPosition, newValue);
                     }
                 } catch (NumberFormatException e) {
-                    // Handle invalid input if needed
                 }
             }
         });
-
         holder.editText_rep.setText(String.valueOf(set.getStoredRep()));
         holder.editText_weight.setText(String.valueOf(set.getStoredWeight()));
-
     }
-
     @Override
     public int getItemCount() {
         return setList.size();
@@ -169,7 +150,6 @@ public class SetAdapter extends RecyclerView.Adapter<SetAdapter.ViewHolder> {
             editText_rep = itemView.findViewById(R.id.editText_rep);
             editText_weight = itemView.findViewById(R.id.editText_weight);
             textView_setNumber = itemView.findViewById(R.id.textView_setNumber);
-
         }
     }
 }

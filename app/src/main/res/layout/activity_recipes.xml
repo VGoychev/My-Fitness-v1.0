@@ -26,14 +26,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
-
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_toRightOf="@id/Recipe"
                 android:layout_margin="5dp"
                 android:src="@drawable/loading" />
-
             <Spinner
                 android:id="@+id/spinner_tags"
                 android:gravity="center"
@@ -41,7 +39,6 @@
                 android:entries="@array/tags"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <androidx.cardview.widget.CardView
@@ -58,11 +55,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     </androidx.cardview.widget.CardView>
-
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recycler_random"
     android:layout_margin="4dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
-
 </LinearLayout>

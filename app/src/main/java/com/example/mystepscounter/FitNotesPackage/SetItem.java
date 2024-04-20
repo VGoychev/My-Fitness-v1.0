@@ -1,5 +1,4 @@
 package com.example.mystepscounter.FitNotesPackage;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;

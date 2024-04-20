@@ -39,32 +39,26 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_guides_group);
-
         String name = getIntent().getStringExtra("NAME");
         String description = getIntent().getStringExtra("DESCRIPTION");
         int image = getIntent().getIntExtra("IMAGE", 0);
-
         TextView groupNameTextView = findViewById(R.id.textView_muscle_group_bar);
         TextView descriptionTextView = findViewById(R.id.muscle_group_description);
         ImageView groupImageView = findViewById(R.id.imageView_muscle_group_activity);
         RecyclerView recyclerView = findViewById(R.id.recycler_exercises_list);
-
         groupNameTextView.setText(name);
         groupImageView.setImageResource(image);
         descriptionTextView.setText(description);
-
         String[] chestExercises;
         String[] armsExercises;
         String[] backExercises;
         String[] absExercises;
         String[] legsExercises;
-
         String[] chestExercisesDescription;
         String[] armsExercisesDescription;
         String[] backExercisesDescription;
         String[] absExercisesDescription;
         String[] legsExercisesDescription;
-
         String[] chestExercisesInstructions;
         String[] armsExercisesInstructions;
         String[] backExercisesInstructions;
@@ -75,7 +69,6 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
                 chestExercises = getResources().getStringArray(R.array.muscle_group_chest_exercises);
                 chestExercisesDescription = getResources().getStringArray(R.array.muscle_group_chest_exercises_description);
                 chestExercisesInstructions = getResources().getStringArray(R.array.muscle_group_chest_exercises_instructions);
-
                 for ( int i = 0; i < chestExercises.length; i++ ) {
                     exerciseModels.add(new ExerciseModel(chestExercises[i],muscle_group_chest_image[i],
                                             chestExercisesDescription[i],chestExercisesInstructions[i]));
@@ -85,7 +78,6 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
                 armsExercises = getResources().getStringArray(R.array.muscle_group_arms_exercises);
                 armsExercisesDescription = getResources().getStringArray(R.array.muscle_group_arms_exercises_description);
                 armsExercisesInstructions = getResources().getStringArray(R.array.muscle_group_arms_exercises_instructions);
-
                 for ( int i = 0; i < armsExercises.length; i++ ) {
                     exerciseModels.add(new ExerciseModel(armsExercises[i],muscle_group_arms_image[i],
                                             armsExercisesDescription[i],armsExercisesInstructions[i]));
@@ -95,7 +87,6 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
                 backExercises = getResources().getStringArray(R.array.muscle_group_back_exercises);
                 backExercisesDescription = getResources().getStringArray(R.array.muscle_group_back_exercises_description);
                 backExercisesInstructions = getResources().getStringArray(R.array.muscle_group_back_exercises_instructions);
-
                 for ( int i = 0; i < backExercises.length; i++ ) {
                     exerciseModels.add(new ExerciseModel(backExercises[i],muscle_group_back_image[i],
                                             backExercisesDescription[i],backExercisesInstructions[i]));
@@ -105,7 +96,6 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
                 absExercises = getResources().getStringArray(R.array.muscle_group_abs_exercises);
                 absExercisesDescription = getResources().getStringArray(R.array.muscle_group_abs_exercises_description);
                 absExercisesInstructions = getResources().getStringArray(R.array.muscle_group_abs_exercises_instructions);
-
                 for ( int i = 0; i < absExercises.length; i++ ) {
                     exerciseModels.add(new ExerciseModel(absExercises[i],muscle_group_abs_image[i],
                                             absExercisesDescription[i],absExercisesInstructions[i]));
@@ -129,7 +119,6 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
-
     @Override
     public void onExerciseClick(int position) {
         Intent intent = new Intent(GuidesGroup.this, MuscleGroupExercise.class);
@@ -137,7 +126,6 @@ public class GuidesGroup extends AppCompatActivity implements ExerciseInterface 
             intent.putExtra("IMAGE_EXERCISE", exerciseModels.get(position).getMuscle_group_exercise_image());
             intent.putExtra("DESCRIPTION_EXERCISE",exerciseModels.get(position).getExerciseDescription());
             intent.putExtra("INSTRUCTION_EXERCISE",exerciseModels.get(position).getExerciseInstruction());
-
             startActivity(intent);
     }
 }

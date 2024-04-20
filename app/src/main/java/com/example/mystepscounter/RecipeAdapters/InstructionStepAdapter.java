@@ -18,34 +18,28 @@ import java.util.List;
 public class InstructionStepAdapter extends RecyclerView.Adapter<InstructionStepViewHolder>{
     Context context;
     List<Step> list;
-
     public InstructionStepAdapter(Context context, List<Step> list) {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public InstructionStepViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new InstructionStepViewHolder(LayoutInflater.from(context).inflate(R.layout.list_instructions_steps, parent, false));
     }
-
     @Override
     public void onBindViewHolder(@NonNull InstructionStepViewHolder holder, int position) {
         holder.textView_instruction_step_number.setText(String.valueOf(list.get(position).number));
         holder.textView_instruction_step_title.setText(list.get(position).step);
-
         holder.recycler_instruction_ingredients.setHasFixedSize(true);
         holder.recycler_instruction_ingredients.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         InstructionIngredientsAdapter instructionIngredientsAdapter = new InstructionIngredientsAdapter(context, list.get(position).ingredients);
         holder.recycler_instruction_ingredients.setAdapter(instructionIngredientsAdapter);
-
         holder.recycler_instruction_equipments.setHasFixedSize(true);
         holder.recycler_instruction_equipments.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         InstructionEquipmentsAdapter instructionEquipmentsAdapter = new InstructionEquipmentsAdapter(context, list.get(position).equipment);
         holder.recycler_instruction_equipments.setAdapter(instructionEquipmentsAdapter);
     }
-
     @Override
     public int getItemCount() {
         return list.size();

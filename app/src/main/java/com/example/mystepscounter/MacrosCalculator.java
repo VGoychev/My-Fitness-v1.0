@@ -40,7 +40,6 @@ public class MacrosCalculator extends AppCompatActivity {
     TextView calculatedValues;
     List<FoodItem> foodItemList = new ArrayList<>();
     FoodAdapter foodAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,45 +50,35 @@ public class MacrosCalculator extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         buttonAdd = findViewById(R.id.buttonAdd);
         calculatedValues = findViewById(R.id.calculatedValues);
-
         SharedPreferences sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         double height = Double.parseDouble(sp.getString("height", ""));
         double weight = Double.parseDouble(sp.getString("weight", ""));
         double age = Double.parseDouble(sp.getString("age", ""));
         String gender = sp.getString("gender", "");
-
         final double MALE_CONST = 88.362;
         final double MALE_WEIGHT_MULT = 13.397;
         final double MALE_HEIGHT_MULT = 4.799;
         final double MALE_AGE_MULT = 5.677;
-
         final double FEMALE_CONST = 447.593;
         final double FEMALE_WEIGHT_MULT = 9.247;
         final double FEMALE_HEIGHT_MULT = 3.098;
         final double FEMALE_AGE_MULT = 4.330;
-
         double calculatedBMR = 0;
-
         if (gender.equalsIgnoreCase("male")) {
             calculatedBMR = MALE_CONST + (MALE_WEIGHT_MULT * weight) + (MALE_HEIGHT_MULT * height) - (MALE_AGE_MULT * age);
         } else if (gender.equalsIgnoreCase("female")) {
             calculatedBMR = FEMALE_CONST + (FEMALE_WEIGHT_MULT * weight) + (FEMALE_HEIGHT_MULT * height) - (FEMALE_AGE_MULT * age);
         }
-
         double activityLevelMultiplier = 1.3;
-
         double caloriesForMaintenance = calculatedBMR * activityLevelMultiplier;
         double caloriesForWeightGain = caloriesForMaintenance + 300;
         double caloriesForWeightLoss = caloriesForMaintenance - 300;
-
         TextView maintenanceCaloriesTextView = findViewById(R.id.maintenanceCaloriesTextView);
         TextView weightGainCaloriesTextView = findViewById(R.id.weightGainCaloriesTextView);
         TextView weightLossCaloriesTextView = findViewById(R.id.weightLossCaloriesTextView);
-
         maintenanceCaloriesTextView.setText("To maintain the weight: " + String.format("%.2f", caloriesForMaintenance) + " calories/day");
         weightGainCaloriesTextView.setText("To gain weight: " + String.format("%.2f", caloriesForWeightGain) + " calories/day");
         weightLossCaloriesTextView.setText("To lose weight: " + String.format("%.2f", caloriesForWeightLoss) + " calories/day");
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_menu, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -102,25 +91,19 @@ public class MacrosCalculator extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 selectedSpinnerItem[0] = adapterView.getItemAtPosition(position).toString();
                 Toast.makeText(MacrosCalculator.this, "Selected: " + selectedSpinnerItem[0], Toast.LENGTH_SHORT).show();
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String selectedItem = selectedSpinnerItem[0];
-
                 int calorie = 0;
                 int fat = 0;
                 int carbohydrate = 0;
                 int protein = 0;
-
                 if (selectedItem.equals("Chicken with rice(350g)")) {
                     calorie = 510;
                     fat = 17;
@@ -231,14 +214,12 @@ public class MacrosCalculator extends AppCompatActivity {
         String json = sharedPreferences.getString("foodItemList", null);
         Type type = new TypeToken<ArrayList<FoodItem>>() {}.getType();
         foodItemList = gson.fromJson(json, type);
-
         if (foodItemList == null) {
             foodItemList = new ArrayList<>();
         }
         foodAdapter = new FoodAdapter(this, foodItemList);
         recycler_food_items.setAdapter(foodAdapter);
         recycler_food_items.setLayoutManager(new LinearLayoutManager(this));
-
         updateCalculatedValues();
     }
     private void updateCalculatedValues() {
@@ -246,14 +227,12 @@ public class MacrosCalculator extends AppCompatActivity {
         int totalFat = 0;
         int totalCarbohydrate = 0;
         int totalProtein = 0;
-
         for (FoodItem foodItem : foodItemList) {
             totalCalorie += foodItem.getCalorie();
             totalFat += foodItem.getFat();
             totalCarbohydrate += foodItem.getCarbohydrate();
             totalProtein += foodItem.getProtein();
         }
-
         String totalText = "Total - " + totalCalorie + " kcal, "
                 + totalFat + "g fat, "
                 + totalCarbohydrate + "g carbs, "
@@ -270,29 +249,22 @@ public class MacrosCalculator extends AppCompatActivity {
         }
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            // Get the position of the swiped item
             int position = viewHolder.getAdapterPosition();
-
-            // Remove the item from your list
             foodItemList.remove(position);
             foodAdapter.notifyItemRemoved(position);
-
             updateCalculatedValues();
         }
     }
     private void checkAndResetData() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyUserPrefs", MODE_PRIVATE);
         String savedDate = sharedPreferences.getString("lastSavedDate", "");
-
         Calendar calendar = Calendar.getInstance();
         String currentDate = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
-
         if (!currentDate.equals(savedDate)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("lastSavedDate", currentDate);
-            editor.remove("foodItemList"); // Clear saved data
+            editor.remove("foodItemList");
             editor.apply();
-
             foodItemList.clear();
             foodAdapter.notifyDataSetChanged();
             calculatedValues.setText("Total -");

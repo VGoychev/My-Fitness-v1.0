@@ -13,7 +13,6 @@
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/Guides"
             android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
             android:textColor="@color/white"
             android:textSize="32sp"
             android:textStyle="bold" />
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -38,7 +36,6 @@
             android:layout_marginBottom="5dp"
             android:layout_toRightOf="@id/Guides"
             android:src="@drawable/biceps1" />
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -50,11 +47,9 @@
             android:src="@drawable/biceps" />
     </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_guides"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp" />
-
 </LinearLayout>

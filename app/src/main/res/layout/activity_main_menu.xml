@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/MyFitnessDefault"
     tools:context=".MainMenu">
-
-
+    <Button
+        android:id="@+id/btn_language"
+        android:layout_width="76dp"
+        android:layout_height="46dp"
+        android:background="@color/MyFitnessDefault"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="EN/BG"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/btnMC"
         android:layout_width="150dp"
@@ -24,7 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
     <Button
         android:id="@+id/btnFN"
         android:layout_width="150dp"
@@ -43,7 +53,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMC" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="119dp"
@@ -56,7 +65,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
-
     <Button
         android:id="@+id/btnRec"
         android:layout_width="150dp"
@@ -74,7 +82,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFN" />
-
     <Button
         android:id="@+id/btnGuides"
         android:layout_width="150dp"
@@ -92,7 +99,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRec" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -107,7 +113,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/age1"
         android:layout_width="wrap_content"
@@ -120,7 +125,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/height1"
         app:layout_constraintVertical_bias="0.04" />
-
     <TextView
         android:id="@+id/gender1"
         android:layout_width="wrap_content"
@@ -133,7 +137,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides"
         app:layout_constraintVertical_bias="1.0" />
-
     <TextView
         android:id="@+id/weight1"
         android:layout_width="wrap_content"
@@ -143,7 +146,6 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/height1"
         app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/height1"
         android:layout_width="wrap_content"
@@ -154,7 +156,6 @@
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides" />
-
     <Button
         android:id="@+id/btnEdit"
         android:layout_width="60dp"
@@ -173,5 +174,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGuides"
         app:layout_constraintVertical_bias="1.0" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

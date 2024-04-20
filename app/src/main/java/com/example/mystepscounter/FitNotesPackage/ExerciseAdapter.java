@@ -42,7 +42,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public ExerciseAdapter(Context context) {
         this.context = context;
     }
-
     @NonNull
     @Override
     public ExerciseAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,7 +49,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         View view = inflater.inflate(R.layout.list_exercises, parent, false);
         return new ExerciseAdapter.ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ExerciseAdapter.ViewHolder holder, int position) {
         holder.textView_exercise_name.setText(this.exerciseList.get(position).exerciseName);
@@ -66,19 +64,15 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return exerciseList.size();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView_exercise_name;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_exercise_name = itemView.findViewById(R.id.textView_exercise);
-
         }
-
     }
 }

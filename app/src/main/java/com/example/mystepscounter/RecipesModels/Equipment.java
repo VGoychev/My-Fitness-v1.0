@@ -1,5 +1,6 @@
 package com.example.mystepscounter.RecipesModels;
 
+
 public class Equipment {
     public int id;
     public String name;

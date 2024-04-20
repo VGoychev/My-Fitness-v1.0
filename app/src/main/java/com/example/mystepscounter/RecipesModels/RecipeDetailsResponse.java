@@ -39,5 +39,4 @@ public class RecipeDetailsResponse {
     public ArrayList<ExtendedIngredient> extendedIngredients;
     public String summary;
     public WinePairing winePairing;
-
 }

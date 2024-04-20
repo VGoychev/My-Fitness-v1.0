@@ -1,5 +1,6 @@
 package com.example.mystepscounter.RecipesModels;
 
+
 public class ProductMatch {
     public int id;
     public String title;
