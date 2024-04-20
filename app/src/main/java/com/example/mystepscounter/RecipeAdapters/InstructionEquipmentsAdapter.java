@@ -21,28 +21,22 @@ import java.util.List;
 public class InstructionEquipmentsAdapter extends RecyclerView.Adapter<InstructionEquipmentsViewHolder>{
     Context context;
     List<Equipment> list;
-
     public InstructionEquipmentsAdapter(Context context, List<Equipment> list) {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public  InstructionEquipmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new InstructionEquipmentsViewHolder(LayoutInflater.from(context).inflate(R.layout.list_instructions_step_items, parent, false));
-
     }
-
     @Override
     public void onBindViewHolder(@NonNull InstructionEquipmentsViewHolder holder, int position) {
         holder.textView_instructions_step_item.setText(list.get(position).name);
         holder.textView_instructions_step_item.setSelected(true);
         String imageUrl = list.get(position).image;
         Picasso.get().load(imageUrl).into(holder.imageView_instructions_step_items);
-
     }
-
     @Override
     public int getItemCount() {
         return list.size();

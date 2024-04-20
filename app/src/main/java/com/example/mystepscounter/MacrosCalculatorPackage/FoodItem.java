@@ -17,8 +17,6 @@ public class FoodItem {
     public String getDisplayText() {
         return displayText;
     }
-
-
     public int getCalorie() {
         return calorie;
     }

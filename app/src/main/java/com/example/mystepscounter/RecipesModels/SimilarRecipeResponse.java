@@ -7,4 +7,5 @@ public class SimilarRecipeResponse {
     public int readyInMinutes;
     public int servings;
     public String sourceUrl;
+
 }

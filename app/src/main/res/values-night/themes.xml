@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Base.Theme.MyStepsCounter" parent="Theme.Material3.DayNight.Dialog">
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>

@@ -18,15 +18,12 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract WorkoutDao workoutDao();
     public abstract ExerciseDao exerciseDao();
     public abstract SetDao setDao();
-
     private static AppDatabase INSTANCE;
-
     public static AppDatabase getInstance(Context context) {
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "DB_NAME")
                     .allowMainThreadQueries()
                     .build();
-
         }
         return INSTANCE;
     }

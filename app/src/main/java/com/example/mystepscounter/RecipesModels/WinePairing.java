@@ -2,6 +2,7 @@ package com.example.mystepscounter.RecipesModels;
 
 import java.util.ArrayList;
 
+
 public class WinePairing {
     public ArrayList<String> pairedWines;
     public String pairingText;

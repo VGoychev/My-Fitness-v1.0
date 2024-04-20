@@ -2,6 +2,7 @@ package com.example.mystepscounter.RecipesModels;
 
 import java.util.ArrayList;
 
+
 public class Recipe {
     public boolean vegetarian;
     public boolean vegan;

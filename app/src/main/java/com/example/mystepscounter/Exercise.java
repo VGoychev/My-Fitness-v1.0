@@ -39,11 +39,9 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
         textViewInstructions = findViewById(R.id.textView_setInstructions);
         String selectedExerciseName = getIntent().getStringExtra("EXERCISE_NAME");
         exerciseName.setText(selectedExerciseName);
-
         initRecyclerView();
         loadSetList();
         loadSavedValues();
-
         btnSetAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,10 +66,8 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
             AppDatabase database = AppDatabase.getInstance(getApplicationContext());
             Log.d("SetItem", "New storedRep: " + setList.get(position).getStoredRep());
             database.setDao().updateSetItem(setList.get(position));
-
         }
     }
-
     @Override
     public void onWeightValueChanged(int position, double newValue) {
         List<SetItem> setList = recyclerViewAdapter.getSetList();
@@ -79,7 +75,6 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
             setList.get(position).setStoredWeight(newValue);
             AppDatabase database = AppDatabase.getInstance(getApplicationContext());
             database.setDao().updateSetItem(setList.get(position));
-
         }
     }
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
@@ -98,7 +93,6 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
             deleteItem(deletedItem);
         }
     }
-
     private void loadSavedValues() {
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         int exerciseId = getIntent().getIntExtra("EXERCISE_ID", -1);
@@ -131,7 +125,6 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
             Log.e("WorkoutActivity", "No workout ID found in the intent");
         }
     }
-
     private void addNewSet(int rep, double weight, int exercise_id) {
         int exerciseId = getIntent().getIntExtra("EXERCISE_ID", -1);
         if (exerciseId != -1) {
@@ -146,9 +139,7 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
                 database.setDao().insertSetItem(setItem);
 
                 SetItem lastInsertedItem = database.setDao().getLastInsertedSetItem();
-
                 if (lastInsertedItem != null) {
-                    // Update the item's ID with the last inserted ID
                     setItem.setId(lastInsertedItem.getId());
 
                     database.setDao().updateSetItem(setItem);
@@ -156,7 +147,6 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
 
                     int position = recyclerViewAdapter.getSetList().indexOf(setItem);
                     if (position != RecyclerView.NO_POSITION) {
-                        // Notify the adapter that the item at this position has been updated
                         recyclerViewAdapter.notifyItemChanged(position);
                     }
                     updateInstructionsVisibility();
@@ -174,18 +164,14 @@ public class Exercise extends AppCompatActivity implements SetItemChangeListener
         recyclerViewAdapter = new SetAdapter(this);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.setItemChangeListener(this);
-
-
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Exercise.SwipeToDeleteCallback());
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
     private void deleteItem(SetItem setItem) {
-
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         database.setDao().delete(setItem);
         recyclerViewAdapter.removeSetItem(setItem);
         updateInstructionsVisibility();
-
     }
     private void updateInstructionsVisibility() {
         if (recyclerViewAdapter.getItemCount() == 0) {

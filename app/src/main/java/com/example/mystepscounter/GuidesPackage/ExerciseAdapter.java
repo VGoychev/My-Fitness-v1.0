@@ -21,9 +21,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
         this.context = context;
         this.exerciseModels = exerciseModels;
         this.exerciseInterface = exerciseInterface;
-
     }
-
     @NonNull
     @Override
     public ExerciseAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,12 +29,10 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
         View view = inflater.inflate(R.layout.list_exercises, parent, false);
         return new ExerciseAdapter.MyViewHolder(view, exerciseInterface);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ExerciseAdapter.MyViewHolder holder, int position) {
         holder.textView_exercise.setText(exerciseModels.get(position).getExerciseName());
     }
-
     @Override
     public int getItemCount() {
         return exerciseModels.size();

@@ -19,11 +19,9 @@ public class ExerciseItem {
     public int getId() {
         return id;
     }
-
     public String getExerciseName() {
         return exerciseName;
     }
-
     public int getWorkoutId() {
         return workoutId;
     }

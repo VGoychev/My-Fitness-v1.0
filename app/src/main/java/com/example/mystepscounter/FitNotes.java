@@ -30,15 +30,12 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
     Button btnAddWorkout;
     TextView txtViewInstructions;
     private WorkoutAdapter recyclerViewAdapter;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_fit_notes);
-
         btnAddWorkout = findViewById(R.id.btnAddWorkout);
         txtViewInstructions = findViewById(R.id.txtViewInstructions);
         btnAddWorkout.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +45,6 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
             }
         });
         initRecyclerView();
-
         loadWorkoutList();
         updateInstructionsVisibility();
         recyclerViewAdapter.setWorkoutInterface(this);
@@ -65,14 +61,11 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_add_workout, null);
         builder.setView(dialogView);
-
         final EditText workoutNameEditText = dialogView.findViewById(R.id.editText_workout_name);
-
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String workoutName = workoutNameEditText.getText().toString().trim();
-
                 if (!workoutName.isEmpty()) {
                     saveNewWorkout(workoutName);
                     loadWorkoutList();
@@ -82,21 +75,18 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
                 dialog.dismiss();
             }
         });
-
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-
         AlertDialog dialog = builder.create();
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
                 Button positiveButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE);
                 Button negativeButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE);
-
                 positiveButton.setTextColor(getResources().getColor(R.color.white));
                 negativeButton.setTextColor(getResources().getColor(R.color.white));
         }
@@ -106,17 +96,14 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.getWindow().setAttributes(layoutParams);
-
         dialog.show();
     }
-
     private void saveNewWorkout(String workoutName) {
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         WorkoutItem workoutItem = new WorkoutItem();
         workoutItem.workoutName = workoutName;
         database.workoutDao().insertWorkoutItem(workoutItem);
     }
-
     public void initRecyclerView() {
         recyclerView = findViewById(R.id.recycler_workout);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -124,13 +111,11 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerViewAdapter = new WorkoutAdapter(this);
         recyclerView.setAdapter(recyclerViewAdapter);
-
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
         ItemTouchHelper itemTouchHelper1 = new ItemTouchHelper(new DragAndDropCallback());
         itemTouchHelper.attachToRecyclerView(recyclerView);
         itemTouchHelper1.attachToRecyclerView(recyclerView);
     }
-
     private void loadWorkoutList() {
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         List<WorkoutItem> workoutList = database.workoutDao().getAllWorkoutItems();
@@ -144,15 +129,11 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             int fromPosition = viewHolder.getAdapterPosition();
             int toPosition = target.getAdapterPosition();
-
-
             recyclerViewAdapter.moveWorkoutItem(fromPosition, toPosition);
             return true;
         }
-
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
         }
     }
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
@@ -165,7 +146,6 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         }
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
             int position = viewHolder.getAdapterPosition();
             WorkoutItem deletedItem = recyclerViewAdapter.getWorkoutList().get(position);
             deleteItem(deletedItem);
@@ -176,9 +156,7 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
         AppDatabase database = AppDatabase.getInstance(this.getApplicationContext());
         database.workoutDao().delete(workoutItem);
         recyclerViewAdapter.removeItem(workoutItem);
-
     }
-
     private void updateInstructionsVisibility() {
         if (recyclerViewAdapter.getItemCount() == 0) {
             txtViewInstructions.setVisibility(View.VISIBLE);
@@ -186,5 +164,4 @@ public class FitNotes extends AppCompatActivity implements WorkoutInterface{
             txtViewInstructions.setVisibility(View.GONE);
         }
     }
-
 }

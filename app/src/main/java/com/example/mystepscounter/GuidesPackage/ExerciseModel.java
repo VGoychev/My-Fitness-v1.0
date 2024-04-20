@@ -5,7 +5,6 @@ public class ExerciseModel {
     String exerciseDescription;
     String exerciseInstruction;
     int  muscle_group_exercise_image;
-
     public ExerciseModel(String exerciseName, int muscle_group_exercise_image,
                          String exerciseDescription, String exerciseInstruction) {
         this.exerciseName = exerciseName;
@@ -13,7 +12,6 @@ public class ExerciseModel {
         this.exerciseDescription = exerciseDescription;
         this.exerciseInstruction = exerciseInstruction;
     }
-
     public String getExerciseName() {
         return exerciseName;
     }
@@ -26,5 +24,4 @@ public class ExerciseModel {
     public String getExerciseInstruction() {
         return exerciseInstruction;
     }
-
 }

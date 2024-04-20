@@ -17,12 +17,10 @@ import java.util.List;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     List<FoodItem> foodItemList;
     Context context;
-
     public FoodAdapter(Context context, List<FoodItem> foodItemList) {
         this.context = context;
         this.foodItemList = foodItemList;
     }
-
     @NonNull
     @Override
     public FoodAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,7 +28,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         View view = inflater.inflate(R.layout.list_food_label, parent, false);
         return new FoodAdapter.ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull FoodAdapter.ViewHolder holder, int position) {
         FoodItem currentFood = foodItemList.get(position);
@@ -40,13 +37,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.textView_food_carbs.setText(String.valueOf(currentFood.getCarbohydrate()));
         holder.textView_food_protein.setText(String.valueOf(currentFood.getProtein()));
     }
-
     @Override
     public int getItemCount() {
         return foodItemList.size();
     }
-
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView_food_name;
         TextView textView_food_kcal;
@@ -61,6 +55,5 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             textView_food_carbs = itemView.findViewById(R.id.textView_food_carbs);
             textView_food_protein = itemView.findViewById(R.id.textView_food_protein);
         }
-        // Add views for each item in the RecyclerView (e.g., TextViews)
     }
 }

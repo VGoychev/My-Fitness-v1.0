@@ -10,7 +10,6 @@ public class WorkoutItem {
     public int id;
     @ColumnInfo(name = "workout_name")
     public String workoutName;
-
     public String getWorkoutName() {
         return workoutName;
     }

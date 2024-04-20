@@ -14,7 +14,6 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <TextView
                 android:id="@+id/textView_muscle_group_exercise_bar"
                 android:layout_width="wrap_content"
@@ -29,7 +28,6 @@
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
-
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -39,7 +37,6 @@
                 android:layout_marginBottom="5dp"
                 android:layout_toRightOf="@id/textView_muscle_group_exercise_bar"
                 android:src="@drawable/exercises" />
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 <LinearLayout
@@ -58,7 +55,6 @@
         android:textSize="16sp"
         android:textStyle="italic|bold"
         android:textAlignment="center" />
-
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView_muscle_group_exercise_activity"
         android:layout_width="match_parent"
@@ -85,5 +81,4 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:background="@color/RecipeCard"/>
-<!--        android:background="@color/RecipeCard" />-->
 </LinearLayout>

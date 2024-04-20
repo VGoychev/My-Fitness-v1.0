@@ -31,8 +31,6 @@ public class RequestManager_Recipes {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     OkHttpClient client = new OkHttpClient();
-
-
     public RequestManager_Recipes(Context context) {
         this.context = context;
     }
@@ -41,7 +39,6 @@ public class RequestManager_Recipes {
     public void setTextViewNutritionInfo(TextView textViewNutritionInfo) {
         this.textViewNutritionInfo = textViewNutritionInfo;
     }
-
     public void getRandomRecipes(RandomRecipeResponseListener listener, List<String> tags){
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class);
         Call<RandomRecipeApiResponse> call = callRandomRecipes.callRandomRecipe(context.getString(R.string.api_key), "12", tags);
@@ -54,7 +51,6 @@ public class RequestManager_Recipes {
                 }
                 listener.didFetch(response.body(), response.message());
             }
-
             @Override
             public void onFailure(Call<RandomRecipeApiResponse> call, Throwable t) {
                 listener.didError(t.getMessage());
@@ -74,7 +70,6 @@ public class RequestManager_Recipes {
                 listener.didFetch(response.body(), response.message());
 
             }
-
             @Override
             public void onFailure(Call<RecipeDetailsResponse> call, Throwable t) {
                 listener.didError(t.getMessage());
@@ -93,14 +88,12 @@ public class RequestManager_Recipes {
                 }
                 listener.didFetch(response.body(), response.message());
             }
-
             @Override
             public void onFailure(Call<List<SimilarRecipeResponse>> call, Throwable t) {
                 listener.didError(t.getMessage());
             }
         });
     }
-
     public void getInstructions(InstructionsListener listener, int id){
         CallInstructions callInstructions = retrofit.create(CallInstructions.class);
         Call<List<InstructionResponse>> call = callInstructions.callInstructions(id, context.getString(R.string.api_key));
@@ -121,7 +114,6 @@ public class RequestManager_Recipes {
             }
         });
     }
-
     private interface CallRandomRecipes{
         @GET("recipes/random")
         Call<RandomRecipeApiResponse> callRandomRecipe(

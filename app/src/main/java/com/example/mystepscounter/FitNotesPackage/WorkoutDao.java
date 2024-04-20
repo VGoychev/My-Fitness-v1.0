@@ -13,7 +13,6 @@ public interface WorkoutDao {
     List<WorkoutItem> getAllWorkoutItems();
     @Query("SELECT * FROM workoutitem WHERE id = :workoutId")
     WorkoutItem getWorkoutById(int workoutId);
-
     @Insert
     void insertWorkoutItem(WorkoutItem... workoutItems);
     @Delete

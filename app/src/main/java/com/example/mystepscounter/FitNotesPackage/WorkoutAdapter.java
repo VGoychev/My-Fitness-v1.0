@@ -19,25 +19,20 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
     private List<WorkoutItem> workoutList;
     private Context context;
     private WorkoutInterface workoutInterface;
-
     public void moveWorkoutItem(int fromPosition, int toPosition) {
         Collections.swap(workoutList, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
     }
-
     public void setWorkoutInterface(WorkoutInterface workoutInterface) {
         this.workoutInterface = workoutInterface;
     }
-
     public void setWorkoutList(List<WorkoutItem> workoutList){
         this.workoutList = workoutList;
         notifyDataSetChanged();
     }
-
     public List<WorkoutItem> getWorkoutList() {
         return workoutList;
     }
-
     public void removeItem(WorkoutItem workoutItem) {
         int position = workoutList.indexOf(workoutItem);
         if (position != -1) {
@@ -48,7 +43,6 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
     public WorkoutAdapter(Context context) {
         this.context = context;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -56,7 +50,6 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
         View view = inflater.inflate(R.layout.list_exercises, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView_workout_name.setText(this.workoutList.get(position).workoutName);
@@ -72,20 +65,15 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return this.workoutList.size();
     }
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView_workout_name;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_workout_name = itemView.findViewById(R.id.textView_exercise);
-
         }
-
     }
 }

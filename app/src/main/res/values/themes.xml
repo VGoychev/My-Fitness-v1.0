@@ -1,8 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
     <style name="Base.Theme.MyStepsCounter" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
     </style>
@@ -10,9 +7,7 @@
         <item name="android:windowBackground">@drawable/custom_dialog_background</item>
     </style>
     <style name="CustomAlertDialogButtonStyle" parent="Widget.AppCompat.Button">
-
         <item name="android:textColor">@color/white</item>
-
     </style>
     <style name="Theme.MyStepsCounter" parent="Base.Theme.MyStepsCounter" />
 </resources>

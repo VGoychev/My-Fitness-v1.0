@@ -37,10 +37,8 @@ public class Recipes extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_recipes);
-
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading...");
-
         searchView = findViewById(R.id.searchView_recipe);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -51,13 +49,11 @@ public class Recipes extends AppCompatActivity {
                 dialog.show();
                 return true;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
         });
-
         spinner = findViewById(R.id.spinner_tags);
         ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(
                 this,
@@ -69,7 +65,6 @@ public class Recipes extends AppCompatActivity {
         spinner.setOnItemSelectedListener(spinnerSelectedListener);
 
         managerRecipes = new RequestManager_Recipes(this);
-
     }
     private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
         @Override
@@ -81,13 +76,11 @@ public class Recipes extends AppCompatActivity {
             randomRecipeAdapter = new RandomRecipeAdapter(Recipes.this, response.recipes, recipeClickListener);
             recyclerView.setAdapter(randomRecipeAdapter);
         }
-
         @Override
         public void didError(String message) {
             Toast.makeText(Recipes.this, message, Toast.LENGTH_SHORT).show();
         }
     };
-
     private final AdapterView.OnItemSelectedListener spinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -96,13 +89,11 @@ public class Recipes extends AppCompatActivity {
             managerRecipes.getRandomRecipes(randomRecipeResponseListener, tags);
             dialog.show();
         }
-
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
 
         }
     };
-
     private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
         @Override
         public void onRecipeClicked(String id) {
