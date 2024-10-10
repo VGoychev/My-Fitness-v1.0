@@ -93,14 +93,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-//    String PREF_SELECTED_LANGUAGE = "selected_language";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-//        setContentView(R.layout.activity_main);
+
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         String selectedLanguage = sp.getString(PREF_SELECTED_LANGUAGE, "");
         if (!selectedLanguage.isEmpty()) {
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
         } else {
-            // If no language preference is saved, proceed with the default onCreate() behavior
+
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
         }
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (radioFemale.isChecked()) {
                         selectedRadiobut = "Female";
                     }
-                    // Implement language switch logic here
+
                     switchLanguage();
                 }
             });
@@ -183,20 +183,20 @@ public class MainActivity extends AppCompatActivity {
             } else if ("Female".equals(selectedRadiobut)) {
                 editor.putString("gender", "Жена");
             }
-            // Add more translations as needed
+
         } else { // English language
             if ("мъж".equals(selectedRadiobut)) {
                 editor.putString("gender", "Male");
             } else if ("жена".equals(selectedRadiobut)) {
                 editor.putString("gender", "Female");
             }
-            // Add more translations as needed
+
         }
         editor.apply();
 
         Log.d("SwitchLanguage", "Switching language to " + newLocale.getLanguage());
 
-        // Restart MainActivity to apply changes (optional)
+
         recreate(); // Restart activity to apply language changes
     }
 }
