@@ -2,14 +2,14 @@ package com.example.mystepscounter;
 
 import android.content.Context;
 
-import com.example.mystepscounter.RecipeListeners.InstructionsListener;
-import com.example.mystepscounter.RecipeListeners.RandomRecipeResponseListener;
-import com.example.mystepscounter.RecipeListeners.RecipeDetailsListener;
-import com.example.mystepscounter.RecipeListeners.SimilarRecipeListener;
-import com.example.mystepscounter.RecipesModels.InstructionResponse;
-import com.example.mystepscounter.RecipesModels.RandomRecipeApiResponse;
-import com.example.mystepscounter.RecipesModels.RecipeDetailsResponse;
-import com.example.mystepscounter.RecipesModels.SimilarRecipeResponse;
+import com.example.mystepscounter.recipe_listeners.InstructionsListener;
+import com.example.mystepscounter.recipe_listeners.RandomRecipeResponseListener;
+import com.example.mystepscounter.recipe_listeners.RecipeDetailsListener;
+import com.example.mystepscounter.recipe_listeners.SimilarRecipeListener;
+import com.example.mystepscounter.recipes_models.InstructionResponse;
+import com.example.mystepscounter.recipes_models.RandomRecipeApiResponse;
+import com.example.mystepscounter.recipes_models.RecipeDetailsResponse;
+import com.example.mystepscounter.recipes_models.SimilarRecipeResponse;
 
 import java.util.List;
 

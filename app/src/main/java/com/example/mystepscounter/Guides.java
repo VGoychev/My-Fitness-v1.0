@@ -8,9 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
-import com.example.mystepscounter.GuidesPackage.GuidesAdapter;
-import com.example.mystepscounter.GuidesPackage.GuidesInterface;
-import com.example.mystepscounter.GuidesPackage.GuidesModel;
+import com.example.mystepscounter.guides_package.adapters.GuidesAdapter;
+import com.example.mystepscounter.guides_package.interfaces.GuidesInterface;
+import com.example.mystepscounter.guides_package.models.GuidesModel;
 
 import java.util.ArrayList;
 

@@ -14,10 +14,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.mystepscounter.FitNotesPackage.ExerciseItem;
-import com.example.mystepscounter.FitNotesPackage.SetAdapter;
-import com.example.mystepscounter.FitNotesPackage.SetItem;
-import com.example.mystepscounter.FitNotesPackage.SetItemChangeListener;
+import com.example.mystepscounter.fit_notes_package.models.ExerciseItem;
+import com.example.mystepscounter.fit_notes_package.adapters.SetAdapter;
+import com.example.mystepscounter.fit_notes_package.models.SetItem;
+import com.example.mystepscounter.fit_notes_package.interfaces.SetItemChangeListener;
 
 import java.util.List;
 

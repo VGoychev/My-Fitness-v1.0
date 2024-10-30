@@ -20,15 +20,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.mystepscounter.FitNotesPackage.ExerciseAdapter;
-import com.example.mystepscounter.FitNotesPackage.ExerciseInterface;
-import com.example.mystepscounter.FitNotesPackage.ExerciseItem;
-import com.example.mystepscounter.FitNotesPackage.WorkoutItem;
+import com.example.mystepscounter.fit_notes_package.adapters.ExerciseAdapter;
+import com.example.mystepscounter.fit_notes_package.interfaces.ExerciseInterface;
+import com.example.mystepscounter.fit_notes_package.models.ExerciseItem;
+import com.example.mystepscounter.fit_notes_package.models.WorkoutItem;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Workout extends AppCompatActivity implements ExerciseInterface {
     Button btnAddExercise;

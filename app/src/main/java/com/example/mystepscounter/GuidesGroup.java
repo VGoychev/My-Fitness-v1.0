@@ -11,9 +11,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mystepscounter.GuidesPackage.ExerciseAdapter;
-import com.example.mystepscounter.GuidesPackage.ExerciseInterface;
-import com.example.mystepscounter.GuidesPackage.ExerciseModel;
+import com.example.mystepscounter.guides_package.adapters.ExerciseAdapter;
+import com.example.mystepscounter.guides_package.interfaces.ExerciseInterface;
+import com.example.mystepscounter.guides_package.models.ExerciseModel;
 
 import java.util.ArrayList;
 

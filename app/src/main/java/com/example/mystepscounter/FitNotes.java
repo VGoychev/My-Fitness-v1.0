@@ -19,9 +19,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.mystepscounter.FitNotesPackage.WorkoutAdapter;
-import com.example.mystepscounter.FitNotesPackage.WorkoutInterface;
-import com.example.mystepscounter.FitNotesPackage.WorkoutItem;
+import com.example.mystepscounter.fit_notes_package.adapters.WorkoutAdapter;
+import com.example.mystepscounter.fit_notes_package.interfaces.WorkoutInterface;
+import com.example.mystepscounter.fit_notes_package.models.WorkoutItem;
 import java.util.List;
 
 

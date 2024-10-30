@@ -12,25 +12,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mystepscounter.RecipeAdapters.IngredientsAdapter;
-import com.example.mystepscounter.RecipeAdapters.InstructionsAdapter;
+import com.example.mystepscounter.recipe_adapters.IngredientsAdapter;
+import com.example.mystepscounter.recipe_adapters.InstructionsAdapter;
 //import com.example.mystepscounter.RecipeAdapters.NutritionLabelAdapter;
-import com.example.mystepscounter.RecipeAdapters.SimilarRecipeAdapter;
-import com.example.mystepscounter.RecipeListeners.InstructionsListener;
-import com.example.mystepscounter.RecipeListeners.RecipeClickListener;
-import com.example.mystepscounter.RecipeListeners.RecipeDetailsListener;
-import com.example.mystepscounter.RecipeListeners.SimilarRecipeListener;
-import com.example.mystepscounter.RecipesModels.InstructionResponse;
-import com.example.mystepscounter.RecipesModels.RecipeDetailsResponse;
-import com.example.mystepscounter.RecipesModels.SimilarRecipeResponse;
+import com.example.mystepscounter.recipe_adapters.SimilarRecipeAdapter;
+import com.example.mystepscounter.recipe_listeners.InstructionsListener;
+import com.example.mystepscounter.recipe_listeners.RecipeClickListener;
+import com.example.mystepscounter.recipe_listeners.RecipeDetailsListener;
+import com.example.mystepscounter.recipe_listeners.SimilarRecipeListener;
+import com.example.mystepscounter.recipes_models.InstructionResponse;
+import com.example.mystepscounter.recipes_models.RecipeDetailsResponse;
+import com.example.mystepscounter.recipes_models.SimilarRecipeResponse;
 import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
-import org.w3c.dom.Document;
 
 import java.util.List;
-import java.util.Locale;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
     int id;

@@ -3,17 +3,13 @@ package com.example.mystepscounter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -23,8 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mystepscounter.MacrosCalculatorPackage.FoodAdapter;
-import com.example.mystepscounter.MacrosCalculatorPackage.FoodItem;
+import com.example.mystepscounter.macros_calculator_package.FoodAdapter;
+import com.example.mystepscounter.macros_calculator_package.FoodItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

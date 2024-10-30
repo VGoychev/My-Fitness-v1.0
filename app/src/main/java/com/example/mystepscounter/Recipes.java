@@ -15,10 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.mystepscounter.RecipeAdapters.RandomRecipeAdapter;
-import com.example.mystepscounter.RecipeListeners.RandomRecipeResponseListener;
-import com.example.mystepscounter.RecipeListeners.RecipeClickListener;
-import com.example.mystepscounter.RecipesModels.RandomRecipeApiResponse;
+import com.example.mystepscounter.recipe_adapters.RandomRecipeAdapter;
+import com.example.mystepscounter.recipe_listeners.RandomRecipeResponseListener;
+import com.example.mystepscounter.recipe_listeners.RecipeClickListener;
+import com.example.mystepscounter.recipes_models.RandomRecipeApiResponse;
 
 import java.util.ArrayList;
 import java.util.List;
