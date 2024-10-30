@@ -1,7 +1,6 @@
 package com.example.mystepscounter;
 
 import android.content.Context;
-import android.widget.TextView;
 
 import com.example.mystepscounter.RecipeListeners.InstructionsListener;
 import com.example.mystepscounter.RecipeListeners.RandomRecipeResponseListener;
@@ -14,7 +13,6 @@ import com.example.mystepscounter.RecipesModels.SimilarRecipeResponse;
 
 import java.util.List;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,8 +28,6 @@ public class RequestManager_Recipes {
             .baseUrl("https://api.spoonacular.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
-    OkHttpClient client = new OkHttpClient();
-
     public RequestManager_Recipes(Context context) {
         this.context = context;
     }
