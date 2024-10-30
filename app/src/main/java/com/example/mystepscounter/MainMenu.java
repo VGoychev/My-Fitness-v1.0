@@ -50,10 +50,8 @@ SharedPreferences sp;
     protected void onCreate(Bundle savedInstanceState) {
         sp = getApplicationContext().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         String selectedLanguage = sp.getString(PREF_SELECTED_LANGUAGE, "");
-//        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-//        setContentView(R.layout.activity_main_menu);
         if (!selectedLanguage.isEmpty()) {
             Locale newLocale = new Locale(selectedLanguage);
             Locale.setDefault(newLocale);
@@ -63,7 +61,6 @@ SharedPreferences sp;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main_menu);
         } else {
-            // If no language preference is saved, proceed with the default onCreate() behavior
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main_menu);
         }
@@ -78,22 +75,11 @@ SharedPreferences sp;
         btnGuides = (Button) findViewById(R.id.btnGuides);
         btnEdit = (Button) findViewById(R.id.btnEdit);
 
-//        if (!selectedLanguage.isEmpty()) {
-//            // Update app's locale based on saved language
-//            Locale newLocale = new Locale(selectedLanguage);
-//            Locale.setDefault(newLocale);
-//            Configuration config = new Configuration();
-//            config.locale = newLocale;
-//            getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-//        }
         String height = sp.getString("height" , "");
         String weight = sp.getString("weight" , "");
         String age = sp.getString("age" , "");
         String gender= sp.getString("gender", "");
-//        gender1.setText("Gender: " + gender);
-//        age1.setText("Age: " + age);
-//        height1.setText("Height(cm): " + height);
-//        weight1.setText("Weight(kg): " + weight);
+
         gender1.setText(getString(R.string.gender) + " " + gender);
         age1.setText(getString(R.string.age) + " " + age);
         height1.setText(getString(R.string.height) + " " + height);
@@ -105,16 +91,13 @@ SharedPreferences sp;
             public void onClick(View v) {
                 Log.d("LanguageButton", "Language button clicked"); // Log message
 
-                // Implement language switch logic here
                 switchLanguage();
             }
         });
     }
     private void switchLanguage() {
-        // Toggle between English and Bulgarian
         Locale newLocale = Locale.getDefault().getLanguage().equals("bg") ? Locale.ENGLISH : new Locale("bg");
 
-        // Update app's locale
         Locale.setDefault(newLocale);
         Configuration config = new Configuration();
         config.locale = newLocale;
@@ -145,7 +128,7 @@ SharedPreferences sp;
         Log.d("SwitchLanguage", "Gender value updated to: " + sp.getString("gender", ""));
         Log.d("SwitchLanguage", "Switching language to " + newLocale.getLanguage());
 
-        // Restart MainActivity to apply changes (optional)
-        recreate(); // Restart activity to apply language changes
+
+        recreate();
     }
 }

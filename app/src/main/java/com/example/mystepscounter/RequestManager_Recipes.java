@@ -31,14 +31,11 @@ public class RequestManager_Recipes {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     OkHttpClient client = new OkHttpClient();
+
     public RequestManager_Recipes(Context context) {
         this.context = context;
     }
-    private TextView textViewNutritionInfo;
 
-    public void setTextViewNutritionInfo(TextView textViewNutritionInfo) {
-        this.textViewNutritionInfo = textViewNutritionInfo;
-    }
     public void getRandomRecipes(RandomRecipeResponseListener listener, List<String> tags){
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class);
         Call<RandomRecipeApiResponse> call = callRandomRecipes.callRandomRecipe(context.getString(R.string.api_key), "12", tags);

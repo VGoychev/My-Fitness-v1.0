@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
     private boolean genderIsSelected() {
-        if (radioGroup.getCheckedRadioButtonId() == -1) { //checking if the user has selected a option using id
+        if (radioGroup.getCheckedRadioButtonId() == -1) {
             Toast toast = Toast.makeText(this, "Please select gender", Toast.LENGTH_SHORT);
             toast.show();
             return false;
@@ -93,14 +93,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-//    String PREF_SELECTED_LANGUAGE = "selected_language";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-//        setContentView(R.layout.activity_main);
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
         String selectedLanguage = sp.getString(PREF_SELECTED_LANGUAGE, "");
         if (!selectedLanguage.isEmpty()) {
@@ -112,13 +109,11 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
         } else {
-            // If no language preference is saved, proceed with the default onCreate() behavior
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
         }
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         if (sp.contains("height") && sp.contains("weight") && sp.contains("age") && sp.contains("gender")) {
-            // Values are stored, navigate to MainMenu directly
             Intent intent = new Intent(MainActivity.this, MainMenu.class);
             startActivity(intent);
         } else {
@@ -153,23 +148,20 @@ public class MainActivity extends AppCompatActivity {
             languageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("LanguageButton", "Language button clicked"); // Log message
+                    Log.d("LanguageButton", "Language button clicked");
                     if (radioMale.isChecked()) {
                         selectedRadiobut = "Male";
                     } else if (radioFemale.isChecked()) {
                         selectedRadiobut = "Female";
                     }
-                    // Implement language switch logic here
                     switchLanguage();
                 }
             });
         }
     }
     private void switchLanguage() {
-        // Toggle between English and Bulgarian
         Locale newLocale = Locale.getDefault().getLanguage().equals("bg") ? Locale.ENGLISH : new Locale("bg");
 
-        // Update app's locale
         Locale.setDefault(newLocale);
         Configuration config = new Configuration();
         config.locale = newLocale;
@@ -183,20 +175,17 @@ public class MainActivity extends AppCompatActivity {
             } else if ("Female".equals(selectedRadiobut)) {
                 editor.putString("gender", "Жена");
             }
-            // Add more translations as needed
-        } else { // English language
+        } else {
             if ("мъж".equals(selectedRadiobut)) {
                 editor.putString("gender", "Male");
             } else if ("жена".equals(selectedRadiobut)) {
                 editor.putString("gender", "Female");
             }
-            // Add more translations as needed
         }
         editor.apply();
 
         Log.d("SwitchLanguage", "Switching language to " + newLocale.getLanguage());
 
-        // Restart MainActivity to apply changes (optional)
-        recreate(); // Restart activity to apply language changes
+        recreate();
     }
 }
